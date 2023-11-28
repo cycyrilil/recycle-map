@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users
   resources :places, only: [:index, :show] do
     resources :favorites, only: [:create]
-    resources :recycles , only: [:create]
+    resources :recycles, only: [:create]
   end
   resources :favorites, only: [:index, :destroy]
   resources :recycles, only: [:destroy]
