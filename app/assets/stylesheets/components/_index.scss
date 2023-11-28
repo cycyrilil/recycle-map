@@ -8,12 +8,12 @@
 @import "connection";
 @import "icones";
 
-@import "/cards/card_last_recycle";
-@import "/cards/card_asso_details";
-@import "/cards/card_collect_point_map";
-@import "/cards/card_collect_point";
-@import "/cards/last_recycles_card";
-@import "/cards/month_activity";
-@import "/cards/card_profile";
-@import "/cards/card_impact";
-@import "/cards/card_search_filtres";
+@import "/cards/card_last_recycle"; //carte où on doit dire ce qu'on a recyclé et valider
+@import "/cards/card_asso_details"; // carte avec les détails de l'asso quand on clique sur la map
+@import "/cards/card_collect_point_map"; // carte qui s'affiche quand on clique sur un point sur la map
+@import "/cards/collect_point"; // carte du point de collecte, avec le bouton favori
+@import "/cards/last_recycles_card"; // cartes qui reprennent les derniers recyclages (point, type, date)
+@import "/cards/month_activity"; // carte qui reprend mois par mois sur laquelle figurent les badges
+@import "/cards/card_profile"; // carte avec les niveaux ("super recycleur, recycleur du dimanche etc")
+@import "/cards/card_impact"; // carte de l'impact (km, plastique recyclé etc)
+@import "/cards/card_search_filtres"; // carte de recherche avec la barre adresse et les filtres
