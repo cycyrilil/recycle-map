@@ -1,0 +1,26 @@
+.btn-primary {
+  background: $primary;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #868966;
+}
+
+
+.btn-secondary {
+  color: $primary;
+  border: 1px solid $primary;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  transition: color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  color: #868966
+}
