@@ -1,0 +1,61 @@
+.container-recycle {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: $light-gray;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.titre-carte {
+font-size: 16px;
+margin-top: 5px;
+}
+
+.sous-titre-carte {
+font-size: 13px;
+margin-top: -15px;
+margin-bottom: 0px;
+}
+
+.bloc-align {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.cat {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin: 15px;
+}
+
+.cat-elec {
+  margin: 10px;
+  font-size: 20px;
+}
+.cat-orga {
+  margin: 10px;
+  font-size: 20px;
+}
+.cat-vet {
+  margin: 10px;
+  font-size: 20px;
+}
+.cat-meubles {
+  margin: 10px;
+  font-size: 20px;
+}
+.cat-megots {
+  margin: 10px;
+  font-size: 20px;
+}
+.cat-autre {
+  margin: 10px;
+  font-size: 20px;
+}

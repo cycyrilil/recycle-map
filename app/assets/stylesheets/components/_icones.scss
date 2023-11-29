@@ -12,3 +12,18 @@
 width: 70%;
 padding-top: 5px;
 }
+
+.circle-green {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $primary;
+  text-align: center;
+  box-shadow: $box-shadow;
+  margin-bottom: 10px;
+}
+
+.fa-recycle {
+  font-size: 30px;
+  padding-top: 15px;
+}
