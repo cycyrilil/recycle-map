@@ -38,14 +38,31 @@ p "#{Badge.count} badges created"
 
   Place.destroy_all
 
-  url = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
+  url_1 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
 
-  uri = URI.open(url)
-  data = JSON.parse(uri.read)
-  data["results"].each do |result|
+  uri = URI.open(url_1)
+  data_1 = JSON.parse(uri.read)
+  data_1["results"].each do |result|
     full_adresse = "#{result["adresse"]}#{result["commune"]}"
     p "creating #{result["libelle"]}"
     Place.create!(name: result["libelle"], address: full_adresse, latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+  end
+
+  url_2 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/liste-zone-de-compostage-zero-dechet/records?limit=20"
+  uri = URI.open(url_2)
+  data_2 = JSON.parse(uri.read)
+  data_2["results"].each do |result|
+    p "creating #{result["nom"]}"
+    Place.create!(name: result["nom"], latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+  end
+
+
+  url_3 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/fichiers_biobox_lambersart/records?limit=9"
+  uri = URI.open(url_3)
+  data_3 = JSON.parse(uri.read)
+  data_3["results"].each do |result|
+    p "creating #{result["denomination"]}"
+    Place.create!(name: result["denomination"], latitude: result["y"], longitude: result["x"])
   end
 
 p "creating some places"
