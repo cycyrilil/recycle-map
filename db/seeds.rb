@@ -7,64 +7,60 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #
-require "open-uri"
-require "json"
 
-url = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
+User.destroy_all
+p "creating some users"
+cyril = User.create!(email: "cyril@mail.com", username: "cycyrilil", password: "zebizebi")
+juan = User.create!(email: "juan@mail.com", username: "juan", password: "juanjuan")
+nono = User.create!(email: "nono@mail.com", username: "nono", password: "nononono")
+p "#{User.count} users created"
 
-uri = URI.open(url)
-data = JSON.parse(uri.read)
-data["results"].each do |result|
-  Place.create!(name: result["libelle"], adress: result["adresse"], latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+Category.destroy_all
+p "creating some categories"
+category_1 = Category.create!(name: "Électronique")
+category_2 = Category.create!(name: "Organique")
+category_3 = Category.create!(name: "Vêtements")
+category_4 = Category.create!(name: "Meubles")
+category_5 = Category.create!(name: "Mégots")
+p "#{Category.count} categories created"
 
-end
-# user
-# User.destroy_all
-# p "creating some users"
-# cyril = User.create!(email: "cyril@mail.com", username: "cycyrilil", password: "zebizebi")
-# juan = User.create!(email: "juan@mail.com", username: "juan", password: "juanjuan")
-# nono = User.create!(email: "nono@mail.com", username: "nono", password: "nononono")
-# p "#{User.count} users created"
+Badge.destroy_all
+p "creating some badges"
+badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: category_1)
+badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: category_2)
+badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: category_3)
+badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: category_4)
+badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: category_5)
+p "#{Badge.count} badges created"
 
-# Category.destroy_all
-# p "creating some categories"
-# category_1 = Category.create!(name: "Électronique")
-# category_2 = Category.create!(name: "Organique")
-# category_3 = Category.create!(name: "Vêtements")
-# category_4 = Category.create!(name: "Meubles")
-# category_5 = Category.create!(name: "Mégots")
-# p "#{Category.count} categories created"
+  require "open-uri"
+  require "json"
 
-# Badge.destroy_all
-# p "creating some badges"
-# badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: category_1)
-# badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: category_2)
-# badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: category_3)
-# badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: category_4)
-# badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: category_5)
-# p "#{Badge.count} badges created"
+  Place.destroy_all
 
-# Place.destroy_all
-# p "creating some places"
-# place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", adress: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
-# place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", adress: "14, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
-# place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", adress: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
-# p "#{Place.count} places created"
+  url = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
 
-# Recycle.destroy_all
-# p "creating some recycle"
-# recycle_1 = Recycle.create!(place: place_1, user: nono)
-# recycle_2 = Recycle.create!(place: place_2, user: nono)
-# p "#{Recycle.count} recycles created"
+  uri = URI.open(url)
+  data = JSON.parse(uri.read)
+  data["results"].each do |result|
+    p "creating #{result["libelle"]}"
+    Place.create!(name: result["libelle"], address: result["adresse"], latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+  end
 
-# RecycleCategory.destroy_all
-# p "creating some recycle categories"
-# recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
-# recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
-# p "#{RecycleCategory.count} recycle categories created"
+Recycle.destroy_all
+p "creating some recycle"
+recycle_1 = Recycle.create!(place: place_1, user: nono)
+recycle_2 = Recycle.create!(place: place_2, user: nono)
+p "#{Recycle.count} recycles created"
 
-# UserBadge.destroy_all
-# p "creating some user badges"
-# user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
-# user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
-# p "#{UserBadge.count} user badges created"
+RecycleCategory.destroy_all
+p "creating some recycle categories"
+recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
+recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
+p "#{RecycleCategory.count} recycle categories created"
+
+UserBadge.destroy_all
+p "creating some user badges"
+user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
+user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
+p "#{UserBadge.count} user badges created"
