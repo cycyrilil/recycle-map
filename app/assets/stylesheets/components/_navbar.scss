@@ -4,13 +4,14 @@
 
 .container {
   display: flex;
-  height: 50px;
+  height: 70px;
   background-color: $light-gray;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   bottom: 0;
   top: auto;
+
 }
 
 .liens-navbar {
@@ -18,4 +19,8 @@
   size: 10px;
   align-items: flex-end;
   // justify-content: space-around;
+}
+
+.min-height {
+  min-height: 100vh;
 }
