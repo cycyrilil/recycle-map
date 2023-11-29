@@ -43,8 +43,9 @@ p "#{Badge.count} badges created"
   uri = URI.open(url)
   data = JSON.parse(uri.read)
   data["results"].each do |result|
+    full_adresse = "#{result["adresse"]}#{result["commune"]}"
     p "creating #{result["libelle"]}"
-    Place.create!(name: result["libelle"], address: result["adresse"], latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+    Place.create!(name: result["libelle"], address: full_adresse, latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
   end
 
 p "creating some places"
