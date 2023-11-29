@@ -8,7 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #
 
-# user
 User.destroy_all
 p "creating some users"
 cyril = User.create!(email: "cyril@mail.com", username: "cycyrilil", password: "zebizebi")
@@ -34,7 +33,20 @@ badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: category
 badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: category_5)
 p "#{Badge.count} badges created"
 
-Place.destroy_all
+  require "open-uri"
+  require "json"
+
+  Place.destroy_all
+
+  url = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
+
+  uri = URI.open(url)
+  data = JSON.parse(uri.read)
+  data["results"].each do |result|
+    p "creating #{result["libelle"]}"
+    Place.create!(name: result["libelle"], address: result["adresse"], latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+  end
+
 p "creating some places"
 place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
 place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
