@@ -6,11 +6,4 @@ class User < ApplicationRecord
   has_many :badges, through: :user_badges
 validates :username, presence: true, uniqueness: true
 
-
-
-
-
-
-
-
 end

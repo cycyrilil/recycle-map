@@ -1,14 +1,14 @@
-.icone {
-  width: 68px;
-  height: 68px;
+.circle {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: white;
+  text-align: center;
+  box-shadow: $box-shadow;
+  margin: 5px;
 }
 
-.icone .fa-solid {
-  width: 42px;
-  height: 42px;
-  color: $primary;
-  text-align: center;
-  vertical-align: middle;
+.circle .w-6 {
+width: 70%;
+padding-top: 5px;
 }
