@@ -52,8 +52,9 @@ p "#{Badge.count} badges created"
   uri = URI.open(url_2)
   data_2 = JSON.parse(uri.read)
   data_2["results"].each do |result|
+    full_adresse_3 = "#{result["adresse"]}, Roubaix"
     p "creating #{result["nom"]}"
-    Place.create!(name: result["nom"], latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+    Place.create!(name: result["nom"], address: full_adresse_3, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
   end
 
 
@@ -70,8 +71,9 @@ p "#{Badge.count} badges created"
   data_4 = JSON.parse(uri.read)
   data_4["results"].each do |result|
     p "creating #{result["nombre_typ"]}"
-    p "creating #{result["rues"]}"
-    Place.create!(name: result["nombre_typ"], latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+    full_adresse_2 = "#{result["rues"]}, Roubaix"
+    p "creating #{result["rues"]},"
+    Place.create!(name: result["nombre_typ"], address: full_adresse_2, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
   end
 # p "creating some places"
 # place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
