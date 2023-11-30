@@ -38,22 +38,35 @@ p "#{Badge.count} badges created"
 
   Place.destroy_all
 
+  Category.destroy_all
+
+  electronique = Category.create(name: "Électronique")
+  organique = Category.create(name: "Organique")
+  vetement = Category.create(name: "Vêtements")
+  meuble = Category.create(name: "Meubles")
+  megot = Category.create(name: "Mégots")
+  autre = Category.create(name: "Autre")
+  
+
+
   url_1 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
 
   uri = URI.open(url_1)
   data_1 = JSON.parse(uri.read)
   data_1["results"].each do |result|
-    full_adresse = "#{result["adresse"]}#{result["commune"]}"
+    full_adresse = "#{result["adresse"]}, #{result["commune"]}"
     p "creating #{result["libelle"]}"
     Place.create!(name: result["libelle"], address: full_adresse, latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+    PlaceCategory.create!(place: Place.last, category: electronique)
   end
 
   url_2 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/liste-zone-de-compostage-zero-dechet/records?limit=20"
   uri = URI.open(url_2)
   data_2 = JSON.parse(uri.read)
   data_2["results"].each do |result|
+    full_adresse_3 = "#{result["adresse"]}, Roubaix"
     p "creating #{result["nom"]}"
-    Place.create!(name: result["nom"], latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+    Place.create!(name: result["nom"], address: full_adresse_3, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
   end
 
 
@@ -65,26 +78,35 @@ p "#{Badge.count} badges created"
     Place.create!(name: result["denomination"], latitude: result["y"], longitude: result["x"])
   end
 
-p "creating some places"
-place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
-place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
-place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
-p "#{Place.count} places created"
+  url_4 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/les-bennes-de-tri-selectif-a-roubaix/records?limit=27"
+  uri = URI.open(url_4)
+  data_4 = JSON.parse(uri.read)
+  data_4["results"].each do |result|
+    p "creating #{result["nombre_typ"]}"
+    full_adresse_2 = "#{result["rues"]}, Roubaix"
+    p "creating #{result["rues"]},"
+    Place.create!(name: result["nombre_typ"], address: full_adresse_2, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+  end
+# p "creating some places"
+# place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
+# place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
+# place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
+# p "#{Place.count} places created"
 
-Recycle.destroy_all
-p "creating some recycle"
-recycle_1 = Recycle.create!(place: place_1, user: nono)
-recycle_2 = Recycle.create!(place: place_2, user: nono)
-p "#{Recycle.count} recycles created"
+# Recycle.destroy_all
+# p "creating some recycle"
+# recycle_1 = Recycle.create!(place: place_1, user: nono)
+# recycle_2 = Recycle.create!(place: place_2, user: nono)
+# p "#{Recycle.count} recycles created"
 
-RecycleCategory.destroy_all
-p "creating some recycle categories"
-recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
-recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
-p "#{RecycleCategory.count} recycle categories created"
+# RecycleCategory.destroy_all
+# p "creating some recycle categories"
+# recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
+# recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
+# p "#{RecycleCategory.count} recycle categories created"
 
-UserBadge.destroy_all
-p "creating some user badges"
-user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
-user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
-p "#{UserBadge.count} user badges created"
+# UserBadge.destroy_all
+# p "creating some user badges"
+# user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
+# user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
+# p "#{UserBadge.count} user badges created"
