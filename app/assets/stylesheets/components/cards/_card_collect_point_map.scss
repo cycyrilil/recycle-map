@@ -1,9 +1,22 @@
-.pop-up-map {
-  border-radius: 10px;
+.container {
+  border-radius: 16px;
   background-color: white;
   padding: 8px 12px;
-  margin: 2px;
-  font-size:x-small;
-  width: 250px;
-  height: 300px;
+  box-shadow: $box-shadow;
+  width: max-content;
+}
+
+.infos-map h2 {
+  font-weight: 700;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.infos-map p {
+  margin: -7px 0px 0px 10px;
+}
+
+.infos-map {
+padding-top: 15px;
+padding-bottom: 15px;
 }

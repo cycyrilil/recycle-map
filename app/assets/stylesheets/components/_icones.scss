@@ -27,3 +27,17 @@ padding-top: 6px;
   font-size: 30px;
   padding-top: 15px;
 }
+
+.circle-green-2 {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: $primary;
+  text-align: center;
+  box-shadow: $box-shadow;
+}
+
+.fa-location-dot {
+  font-size: 25px;
+  padding-top: 10px;
+}
