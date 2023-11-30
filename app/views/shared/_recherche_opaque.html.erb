@@ -16,33 +16,36 @@
   </div>
 
     <div class="filtres">
-
+            <%= link_to places_path(query: "Électronique") do %>
               <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>">
                 🪫  Électronique
               </div>
-
+            <% end %>
+            <%= link_to places_path(query: "Organique") do %>
               <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
                 🍌  Organique
               </div>
-
-
+            <% end %>
+            <%= link_to places_path(query: "Vêtements") do %>
               <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
                 👚  Vêtements
               </div>
-
-
+            <% end %>
+            <%= link_to places_path(query: "Filtre") do %>
               <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
                 🪑  Meubles
               </div>
-
-
+            <% end %>
+            <%= link_to places_path(query: "Mégots") do %>
               <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
                 🚬  Mégots
               </div>
-
+            <% end %>
+            <%= link_to places_path(query: "Autre") do %>
               <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
                 🗑️  Autre
               </div>
+            <% end %>
 
     </div>
 </div>
