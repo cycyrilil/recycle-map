@@ -38,14 +38,26 @@ p "#{Badge.count} badges created"
 
   Place.destroy_all
 
+  Category.destroy_all
+
+  electronique = Category.create(name: "Électronique")
+  organique = Category.create(name: "Organique")
+  vetement = Category.create(name: "Vêtements")
+  meuble = Category.create(name: "Meubles")
+  megot = Category.create(name: "Mégots")
+  autre = Category.create(name: "Autre")
+  
+
+
   url_1 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
 
   uri = URI.open(url_1)
   data_1 = JSON.parse(uri.read)
   data_1["results"].each do |result|
-    full_adresse = "#{result["adresse"]}#{result["commune"]}"
+    full_adresse = "#{result["adresse"]}, #{result["commune"]}"
     p "creating #{result["libelle"]}"
     Place.create!(name: result["libelle"], address: full_adresse, latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
+    PlaceCategory.create!(place: Place.last, category: electronique)
   end
 
   url_2 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/liste-zone-de-compostage-zero-dechet/records?limit=20"
@@ -71,20 +83,20 @@ place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi 
 place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
 p "#{Place.count} places created"
 
-Recycle.destroy_all
-p "creating some recycle"
-recycle_1 = Recycle.create!(place: place_1, user: nono)
-recycle_2 = Recycle.create!(place: place_2, user: nono)
-p "#{Recycle.count} recycles created"
+# Recycle.destroy_all
+# p "creating some recycle"
+# recycle_1 = Recycle.create!(place: place_1, user: nono)
+# recycle_2 = Recycle.create!(place: place_2, user: nono)
+# p "#{Recycle.count} recycles created"
 
-RecycleCategory.destroy_all
-p "creating some recycle categories"
-recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
-recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
-p "#{RecycleCategory.count} recycle categories created"
+# RecycleCategory.destroy_all
+# p "creating some recycle categories"
+# recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
+# recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
+# p "#{RecycleCategory.count} recycle categories created"
 
-UserBadge.destroy_all
-p "creating some user badges"
-user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
-user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
-p "#{UserBadge.count} user badges created"
+# UserBadge.destroy_all
+# p "creating some user badges"
+# user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
+# user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
+# p "#{UserBadge.count} user badges created"

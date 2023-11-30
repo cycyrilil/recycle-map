@@ -1,7 +1,9 @@
 <div class="container">
   <div class="image-navbar">
+  <%= link_to root_path do %>
   <%= image_tag("logo1.png", width:'90%') %>
   </div>
+  <% end %>
   <div class="liens-navbar">
     <%= render "shared/icone-coeur" %>
     <%= render "shared/icone-profil" %>
