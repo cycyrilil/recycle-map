@@ -65,26 +65,29 @@ p "#{Badge.count} badges created"
     Place.create!(name: result["denomination"], latitude: result["y"], longitude: result["x"])
   end
 
-p "creating some places"
-place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
-place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
-place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
-p "#{Place.count} places created"
 
-Recycle.destroy_all
-p "creating some recycle"
-recycle_1 = Recycle.create!(place: place_1, user: nono)
-recycle_2 = Recycle.create!(place: place_2, user: nono)
-p "#{Recycle.count} recycles created"
 
-RecycleCategory.destroy_all
-p "creating some recycle categories"
-recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
-recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
-p "#{RecycleCategory.count} recycle categories created"
 
-UserBadge.destroy_all
-p "creating some user badges"
-user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
-user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
-p "#{UserBadge.count} user badges created"
+# p "creating some places"
+# place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
+# place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
+# place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
+# p "#{Place.count} places created"
+
+# Recycle.destroy_all
+# p "creating some recycle"
+# recycle_1 = Recycle.create!(place: place_1, user: nono)
+# recycle_2 = Recycle.create!(place: place_2, user: nono)
+# p "#{Recycle.count} recycles created"
+
+# RecycleCategory.destroy_all
+# p "creating some recycle categories"
+# recycle_category_1 = RecycleCategory.create!(category: category_1, recycle: recycle_1)
+# recycle_category_2 = RecycleCategory.create!(category: category_2, recycle: recycle_2)
+# p "#{RecycleCategory.count} recycle categories created"
+
+# UserBadge.destroy_all
+# p "creating some user badges"
+# user_badge_1 = UserBadge.create!(badge: badge_1, user: nono)
+# user_badge_2 = UserBadge.create!(badge: badge_2, user: nono)
+# p "#{UserBadge.count} user badges created"
