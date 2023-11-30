@@ -16,5 +16,6 @@
 @import "/cards/month_activity"; // carte qui reprend mois par mois sur laquelle figurent les badges
 @import "/cards/card_profile"; // carte avec les niveaux ("super recycleur, recycleur du dimanche etc")
 @import "/cards/card_impact"; // carte de l'impact (km, plastique recyclé etc)
-@import "/cards/card_search_filtres"; // carte de recherche avec la barre adresse et les filtres
 @import "/map_design";
+@import "navbar-top";
+@import "/cards/card_search_filtres_opaque";

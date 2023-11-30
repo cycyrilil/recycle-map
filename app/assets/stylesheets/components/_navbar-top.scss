@@ -2,16 +2,15 @@
   width: 35%;
 }
 
-.container {
+.container-3 {
   display: flex;
   height: 70px;
   background-color: $light-gray;
   align-items: center;
   justify-content: space-between;
   position:fixed;
-  bottom: 0;
-  top: auto;
-
+  top: 0;
+  bottom: auto;
 }
 
 .liens-navbar {
@@ -21,6 +20,6 @@
   // justify-content: space-around;
 }
 
-.min-height {
-  min-height: 100vh;
-}
+// .min-height {
+//   min-height: 100vh;
+// }

@@ -1,9 +1,6 @@
-.container {
-  border-radius: 16px;
-  background-color: white;
-  padding: 8px 12px;
-  box-shadow: $box-shadow;
-  width: max-content;
+.bloc {
+  display: flex;
+  align-items: center;
 }
 
 .infos-map h2 {
@@ -19,4 +16,11 @@
 .infos-map {
 padding-top: 15px;
 padding-bottom: 15px;
+}
+
+.mapboxgl-popup {
+  // border-radius: 16px;
+  // background-color: white;
+  // padding: 8px 12px;
+  // box-shadow: $box-shadow;
 }
