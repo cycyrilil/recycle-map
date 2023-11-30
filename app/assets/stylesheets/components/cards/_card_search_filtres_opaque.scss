@@ -4,9 +4,6 @@
   margin: 5px;
 }
 
-.opac {
-  opacity: 0.7;
-}
 
 .filtre {
   border-radius: 10px;
@@ -35,7 +32,7 @@
 }
 
 .background-white-opacity {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .background-gray-opacity {
@@ -53,7 +50,6 @@
 }
 
 .search-form-control .form-control {
-
   background-color: white;
   border-radius: 10px;
   border: 0px solid #E7E7E7;
@@ -76,3 +72,7 @@
   color: #5D5D5B;
   font-size: smaller;
 }
+
+// .no-background {
+//   background-color: transparent;
+// }
