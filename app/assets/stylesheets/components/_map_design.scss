@@ -1,3 +1,7 @@
 .map {
-  height: 150px;
+  position: absolute;
+}
+
+.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+display: none;
 }
