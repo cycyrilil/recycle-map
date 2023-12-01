@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
       {
         lat: place.latitude,
         lng: place.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { place: place }),
       }
     end
   end
