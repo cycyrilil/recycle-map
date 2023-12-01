@@ -1,6 +1,12 @@
 class FavoritesController < ApplicationController
   def index
-    @favorites = Favorite.all
+    @places = Place.joins(:favorites).where(favorites: { user_id: current_user.id })
+    @markers = @places.geocoded.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude,
+      }
+    end
   end
 
   def destroy
@@ -15,10 +21,16 @@ class FavoritesController < ApplicationController
     @favorite.user_id = current_user
     @favorite.place = @place
     if @favorite.save
+      #change le status de favoris + toggle
+      if @favorite.status == false
+        @favorite.status = true
+      else
+        @favorite.status = false
+      end
       @favorite.place = @place
-      redirect_to place_path(@place)
+      redirect_to favorites_path(@place)
     else
-      render "actors/show", status: :unprocessable_entity
+      render "favorites/index", status: :unprocessable_entity
     end
   end
 end
