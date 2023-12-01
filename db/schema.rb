@@ -57,6 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_121038) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "recycle_categories", force: :cascade do |t|
