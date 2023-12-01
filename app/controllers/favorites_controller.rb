@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
       {
         lat: place.latitude,
         lng: place.longitude,
+        marker_html: render_to_string(partial: "marker", locals: { favorite: favorite }),
       }
     end
   end
