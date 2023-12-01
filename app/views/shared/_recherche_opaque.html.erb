@@ -1,0 +1,51 @@
+
+
+<div class="container-recherche <%= "bot-side" if current_page?(places_path)%>  <%= "background-gray-opacity" if current_page?(places_path)%>  ">
+
+  <div class="search-bar">
+
+<form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+
+
+  <div class="search-form-control form-group">
+    <input class="form-control string required <%= "background-white-opacity" if current_page?(places_path)%>" type="text" name="search[query]" id="search_query" placeholder="Adresse"/>
+    <i class="fas fa-search errspan" style=color: #f4f4f4></i>
+  </div>
+</form>
+
+  </div>
+
+    <div class="filtres">
+            <%= link_to places_path(query: "Électronique") do %>
+              <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>">
+                🪫  Électronique
+              </div>
+            <% end %>
+            <%= link_to places_path(query: "Organique") do %>
+              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
+                🍌  Organique
+              </div>
+            <% end %>
+            <%= link_to places_path(query: "Vêtements") do %>
+              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
+                👚  Vêtements
+              </div>
+            <% end %>
+            <%= link_to places_path(query: "Filtre") do %>
+              <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
+                🪑  Meubles
+              </div>
+            <% end %>
+            <%= link_to places_path(query: "Mégots") do %>
+              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
+                🚬  Mégots
+              </div>
+            <% end %>
+            <%= link_to places_path(query: "Autre") do %>
+              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
+                🗑️  Autre
+              </div>
+            <% end %>
+
+    </div>
+</div>

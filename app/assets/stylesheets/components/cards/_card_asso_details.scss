@@ -1,0 +1,41 @@
+
+hr {
+  width: 2px;
+}
+
+.container-recycle-2 {
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: $light-gray;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  z-index: 3;
+}
+
+.titre-carte {
+font-size: 16px;
+margin-top: 5px;
+}
+
+.sous-titre-carte {
+font-size: 13px;
+margin-top: -15px;
+margin-bottom: 10px;
+}
+
+.bloc-align {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.infos {
+  text-align: left;
+}

@@ -1,22 +1,33 @@
-.container {
-  border-radius: 16px;
-  background-color: white;
-  padding: 8px 12px;
-  box-shadow: $box-shadow;
-  width: max-content;
+.bloc {
+  display: flex;
+  align-items: center;
 }
 
 .infos-map h2 {
   font-weight: 700;
   font-size: 12px;
   margin-left: 10px;
+  color: $gray;
 }
 
 .infos-map p {
   margin: -7px 0px 0px 10px;
+  color: $gray;
 }
 
 .infos-map {
 padding-top: 15px;
 padding-bottom: 15px;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 16px !important;
+  background-color: white !important;
+  padding: 8px 12px !important;
+  box-shadow: $box-shadow !important;
+}
+
+.mapboxgl-popup-close-button {
+margin: 3px;
+color: #9898989a;
 }

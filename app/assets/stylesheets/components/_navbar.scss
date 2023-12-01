@@ -8,10 +8,9 @@
   background-color: $light-gray;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  position:fixed;
   bottom: 0;
-  top: auto;
-
+  z-index: 2;
 }
 
 .liens-navbar {
@@ -23,4 +22,9 @@
 
 .min-height {
   min-height: 100vh;
+}
+
+.navbar-top {
+  top: 0;
+  z-index: 5;
 }

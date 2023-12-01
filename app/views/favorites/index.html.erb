@@ -1,5 +1,10 @@
+
 <div style="width: 100%; height: 700px;"
   data-controller="map toggle"
   data-action="click->toggle#createFavorite"
+<%= render "shared/card_asso_details"%>
   data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class="map"></div>
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class="map">
+</div>
+
+<%= render "shared/navbar"%>

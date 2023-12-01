@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_155316) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_01_121038) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,8 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_155316) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
   end
 
   create_table "recycle_categories", force: :cascade do |t|
