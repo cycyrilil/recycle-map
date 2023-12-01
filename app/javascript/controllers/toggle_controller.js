@@ -5,7 +5,7 @@ export default class extends Controller {
   connect() {
     async function createFavorite() {
       try {
-        const favorite = new Favorite({
+        const favorite = Favorite.new({
           favorite_params: getFavoriteParams(),
           place_id: params.placeId,
         });

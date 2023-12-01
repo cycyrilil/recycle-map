@@ -5,6 +5,8 @@ class FavoritesController < ApplicationController
       {
         lat: place.latitude,
         lng: place.longitude,
+        marker_html: render_to_string(partial: "marker", locals: { place: place })
+
       }
     end
   end
@@ -16,19 +18,20 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.new(favorite_params)
-    @place = Place.find(params[:place_id])
-    @favorite.user_id = current_user
-    @favorite.place = @place
+
+    @place = Place.joins(:favorites).find_by(favorites: { user_id: current_user.id })
+    @favorite = Favorite.new(place: @place, user: current_user)
+
+    # Inversion du statut du favori
+
+    if @favorite
+      @favorite.status = !@favorite.status
+    else
+      @favorite = current_user.favorites.new(place: @place, status: true)
+    end
+
     if @favorite.save
-      #change le status de favoris + toggle
-      if @favorite.status == false
-        @favorite.status = true
-      else
-        @favorite.status = false
-      end
-      @favorite.place = @place
-      redirect_to favorites_path(@place)
+      redirect_to favorites_path
     else
       render "favorites/index", status: :unprocessable_entity
     end
