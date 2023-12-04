@@ -1,5 +1,6 @@
-<div style="width: 100%; height: 100vh; position: absolute;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class="map">
-</div>
+<% @favorites.each do |favorite| %>
+<%= favorite.place.name %>
+<%= favorite.place.description %>
+<%= favorite.place.address %>
+<%= button_to "Enlever des favoris", favorite_path(favorite), data: { "turbo-method": :delete } %>
+<% end%>
