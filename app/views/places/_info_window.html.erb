@@ -1,7 +1,7 @@
 <%= render "shared/collect_point_cards", place: place %>
-<%= link_to favorites_path do %>
-  <div class="card" data-controller="toggle-favorite" data-toggle-favorite-place-id="1">
-    <div class="card-body" button data-action="toggle-favorite#toggleFavorite" data-toggle-favorite-target="button">
+<%= link_to place_favorites_path(place), data:{turbo_method: :post} do %>
+  <div class="card" data-controller="toggle">
+    <div class="card-body" button data-action="toggle#createFavorite" data-toggle-favorite-target="button">
       <h5 class="card-title">Ajouter aux favoris</h5>
     </div>
   </div>

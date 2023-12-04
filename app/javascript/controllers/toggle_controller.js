@@ -5,7 +5,7 @@
 //   connect() {
 //     async function createFavorite() {
 //       try {
-//         const favorite = new Favorite({
+//         const favorite = new favorite({
 //           favorite_params: getFavoriteParams(),
 //           place_id: params.placeId,
 //         });
@@ -33,20 +33,3 @@
 //       }
 //     }
 // }}
-import { Controller } from "@hotwired/stimulus";
-
-export default class extends Controller {
-  static targets = ["button"];
-
-  async toggleFavorite() {
-    const placeId = this.data.get("placeId");
-    const response = await fetch(`/toggle_favorite/${placeId}`, { method: "POST" });
-
-    if (response.ok) {
-      const data = await response.json();
-      this.buttonTarget.textContent = data.status ? "Retirer des favoris" : "Ajouter aux favoris";
-    } else {
-      console.error("Erreur lors de la requête AJAX");
-    }
-  }
-}
