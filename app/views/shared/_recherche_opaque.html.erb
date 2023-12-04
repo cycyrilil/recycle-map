@@ -4,15 +4,24 @@
 
   <div class="search-bar">
 
-<form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+  <%= simple_form_for places_path, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
+    <%= form.input :address,
+      input_html: { data: { address_autocomplete_target: "address" } },
+      wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } }
+    %>
 
+    <div class="search-form-control form-group">
+      <%= form.text_field :query, class: "form-control string required #{'background-white-opacity' if current_page?(places_path)}", placeholder: 'Adresse', id: 'search_query' %>
+        <%= form.input :address,
+      input_html: { data: { address_autocomplete_target: "address" } },
+      wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } }
+    %>
+      <i class="fas fa-search errspan" style="color: #f4f4f4"></i>
+    </div>
 
-  <div class="search-form-control form-group">
-    <input class="form-control string required <%= "background-white-opacity" if current_page?(places_path)%>" type="text" name="search[query]" id="search_query" placeholder="Adresse"/>
-    <i class="fas fa-search errspan" style=color: #f4f4f4></i>
+    <%= form.submit "Rechercher" %>
+<% end %>
 
-  </div>
-</form>
 
   </div>
 
