@@ -18,6 +18,8 @@ export default class extends Controller {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    
+
 
   };
   #addMarkersToMap() {
@@ -28,8 +30,11 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup) // Add this
         .addTo(this.map)
+
+
     });
   };
+
 
 
   #fitMapToMarkers() {
@@ -38,4 +43,15 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
+
 };
+function getDirections() {
+  // Remplacez les coordonnées de destination par celles de votre destination
+  var destination = { lat: DESTINATION_LATITUDE, lng: DESTINATION_LONGITUDE };
+
+  // Créez une URL pour ouvrir Google Maps avec les directions
+  var googleMapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + destination.lat + ',' + destination.lng;
+
+  // Ouvrez une nouvelle fenêtre ou un nouvel onglet avec l'URL
+  window.open(googleMapsUrl, '_blank');
+}

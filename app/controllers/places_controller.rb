@@ -1,6 +1,9 @@
 class PlacesController < ApplicationController
   def index
     @places = Place.all
+    @last_place = Favorite.last.nil? ? Place.first : Favorite.last.place
+
+
     if params[:query].present?
       # @places  = @places.where("category ILIKE ?", "%#{params[:query]}%")
       @places = Place.joins(:categories).where("categories.name ILIKE ?", "%#{params[:query]}%")
