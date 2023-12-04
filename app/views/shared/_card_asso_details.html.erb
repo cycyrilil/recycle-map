@@ -1,18 +1,24 @@
-<div class="container-recycle-2">
 
-<div class="bloc-align">
-<%= render "shared/icone-recycle" %>
-<div class='infos'>
-<p class="titre-carte"><strong>Cy'Clopes</strong></p>
-<hr/>
-<%# <p class="sous-titre-carte"> <i class="fa-solid fa-location-dot" style="color: #2b2b28;"></i>Adresse à insérer</p> %>
-<hr/>
-<p class="sous-titre-carte">L'association Cy'Clopes recycle les mégots depuis 1687 grace à une technique révolutionnaire. Vos filtres se transforment en compléments alimentaires !</p>
-<h/>
-<p class="sous-titre-carte">Minimum de 10kg de mégots, association ouverte de 9h à 10h le premier mardi du mois des années bisextiles.</p>
-</div>
 
-<button class="btn-primary details">J'y vais</button>
-<button class="btn-primary secondary">J'ai recyclé</button>
-</div>
+<div class="container-recycle-3">
+        <div class="boutons-favoris">
+        <%= render "shared/icone-coeur", without_bg: true  %>
+        </div>
+
+<%= link_to place_favorites_path(place), data:{turbo_method: :post} do %>
+<% end %>
+
+  <div class="bloc-align">
+    <%= render "shared/icone-recycle" %>
+      <div class='infos'>
+      <p class="titre-carte"><strong><%= place.name %></strong></p>
+      <p class="sous-titre-carte"> <%= place.address %></p>
+      <p class="sous-titre-carte"><%= place.description %></p>
+      <p class="sous-titre-carte"><%= place.conditions %></p>
+      </div>
+        <div class="boutons-carte">
+          <button class="btn-primary details">J'y vais</button>
+          <button class="btn-secondary">J'ai recyclé</button>
+        </div>
+  </div>
 </div>
