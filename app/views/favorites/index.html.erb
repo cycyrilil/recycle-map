@@ -11,8 +11,10 @@
             <div class="favorite_title">
               <%= favorite.place.name %>
                   <div class="bouton_favoris">
-              <%= link_to favorite_path(favorite), method: :delete do %>
-                <%= render "shared/icone-coeur", without_bg: true  %>
+
+              <%= link_to favorite_path(favorite), data: {turbo_method: :delete}  do %>
+                <%= render "shared/icone-coeur-remove", without_bg: true  %>
+
               <% end %>
                   </div>
             </div>
@@ -25,4 +27,3 @@
       </div>
   </div>
 <% end%>
-
