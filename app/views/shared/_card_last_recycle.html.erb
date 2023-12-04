@@ -4,35 +4,40 @@
 <%= render "shared/icone-recycle" %>
 <p class="titre-carte"><strong>Point de collecte à insérer</strong></p>
 <p class="sous-titre-carte">Dernier recyclage à insérer</p>
-
-<div class="cat">
-<div class="cat-elec">
+<%= simple_form_for [Place.last, Recycle.new] do %>
+<div class="cat form-group">
+<input type="checkbox" id="électronique" class="form-check-input" name="category[]" value="Electronique">
+<label class="cat-elec form-check-input" for="Electronique">
 🪫
 </div>
 
-<div class="cat-orga">
+<input type="checkbox" id="organique" class="form-check-input" name="category[]" value="Organique">
+<label class="cat-orga form-check-input" for="organique">
 🍌
-</div>
+</label>
 
-<div class="cat-vet">
+<input type="checkbox" id="vêtements" class="form-check-input" name="category[]" value="Vêtements">
+<label class="cat-vet form-check-input" for="vêtements" >
 👚
-</div>
+</label>
 
-<div class="cat-meubles">
+<input type="checkbox" id="meuble" class="form-check-input" name="category[]" value="Meuble">
+<label class="cat-meubles form-check-input" for="meuble">
 🪑
-</div>
+</label>
 
-<div class="cat-megots">
+<input type="checkbox" id="mégots" class="form-check-input" name="category[]" value="Mégots">
+<label class="cat-megots form-check-input" for="mégots" >
 🚬
-</div>
+</label>
 
-<div class="cat-autre">
+<input type="checkbox" id="autre" class="form-check-input" name="category[]" value="Autre">
+<label class="cat-autre formm-check-input" for="autre">
 🗑️
+</label>
 </div>
 
-</div>
-
-<button class="btn-primary">Valider</button>
-
+<button class="btn-primary" type="summit">Valider</button>
+<% end %>
 </div>
 </div>

@@ -2,5 +2,5 @@
 <%= favorite.place.name %>
 <%= favorite.place.description %>
 <%= favorite.place.address %>
-<%= button_to "Enlever des favoris", favorite_path(favorite), data: { "turbo-method": :delete } %>
-<% end%>
+<%= button_to "Enlever des favoris", favorite_path(favorite), method: :delete %>
+<% end %>
