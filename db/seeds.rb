@@ -21,9 +21,9 @@ Recycle.destroy_all
 
 
 p "creating some users"
-cyril = User.create!(email: "cyril@mail.com", username: "cycyrilil", password: "zebizebi")
-juan = User.create!(email: "juan@mail.com", username: "juan", password: "juanjuan")
-nono = User.create!(email: "nono@mail.com", username: "nono", password: "nononono")
+cyril = User.create!(email: "cyril@mail.com", username: "Cyril", password: "zebizebi")
+juan = User.create!(email: "juan@mail.com", username: "Juan", password: "juanjuan")
+nono = User.create!(email: "nono@mail.com", username: "Noémie", password: "nononono")
 p "#{User.count} users created"
 
 

@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:index, :destroy]
   resources :recycles, only: [:destroy]
-  get "profile" => "profile#profile"
+  get "profile" => "profiles#profile"
 end
