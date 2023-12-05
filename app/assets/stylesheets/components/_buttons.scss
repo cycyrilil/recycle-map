@@ -38,3 +38,28 @@
   color: rgba(255, 255, 255, 0.7);
 
 }
+
+
+.btn-primary-small {
+  background: $primary;
+  color: white;
+  padding: 4px 24px;
+  border-radius: 12px;
+  // font-weight: lighter;
+  transition: color 0.3s ease;
+  // box-shadow: $box-shadow;
+  width: 346px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  border: none;
+  font-weight: 700px !important;
+}
+
+.btn-primary-small input {
+  text-decoration: none;
+  background-color: none;
+}
+
+.btn-primary-small:hover {
+  background: #868966;
+}
