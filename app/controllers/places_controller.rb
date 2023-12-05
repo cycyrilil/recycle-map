@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { place: place }),
-        marker_html: render_to_string(partial: "marker", locals: { place: place })
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
