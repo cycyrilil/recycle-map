@@ -24,6 +24,8 @@ class PlacesController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+
+    @user_marker = { marker_html: render_to_string(partial: "user_marker") }
   end
 
   def show
