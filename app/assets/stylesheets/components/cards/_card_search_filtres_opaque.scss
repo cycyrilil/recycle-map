@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 5px;
+  margin-top: -2.5px;
+  padding-bottom: 2px;
 }
 
 
@@ -19,6 +21,7 @@
   background-color: $light-gray;
   padding: 5px;
   margin: 10px;
+  padding-bottom: 10px;
   position: relative;
   z-index: 3;
 }
@@ -85,4 +88,15 @@
 .selected-color {
   background-color: #5D5D5B;
   color: white;
+}
+
+
+.mapboxgl-ctrl-geocoder {
+  background-color: white !important;
+  border-radius: 12px !important;
+  border: 0px solid #E7E7E7 !important;
+  margin: 5px !important;
+  width: 348px !important;
+  height: 40px !important;
+  box-shadow: none !important;
 }
