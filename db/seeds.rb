@@ -46,7 +46,7 @@ p "#{Badge.count} badges created"
   meuble = Category.create(name: "Meubles")
   megot = Category.create(name: "Mégots")
   autre = Category.create(name: "Autre")
-  
+
 
 
   url_1 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
@@ -67,6 +67,7 @@ p "#{Badge.count} badges created"
     full_adresse_3 = "#{result["adresse"]}, Roubaix"
     p "creating #{result["nom"]}"
     Place.create!(name: result["nom"], address: full_adresse_3, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+    PlaceCategory.create!(place: Place.last, category: organique)
   end
 
 
