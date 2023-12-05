@@ -77,6 +77,7 @@ p "#{Badge.count} badges created"
   data_3["results"].each do |result|
     p "creating #{result["denomination"]}"
     Place.create!(name: result["denomination"], latitude: result["y"], longitude: result["x"])
+    PlaceCategory.create!(place: Place.last, category: organique)
   end
 
   url_4 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/les-bennes-de-tri-selectif-a-roubaix/records?limit=27"
@@ -87,6 +88,7 @@ p "#{Badge.count} badges created"
     full_adresse_2 = "#{result["rues"]}, Roubaix"
     p "creating #{result["rues"]},"
     Place.create!(name: result["nombre_typ"], address: full_adresse_2, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+    PlaceCategory.create!(place: Place.last, category: meuble)
   end
 # p "creating some places"
 # place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")

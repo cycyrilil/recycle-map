@@ -4,63 +4,50 @@
 
   <div class="search-bar">
 
-<%= form_with url: places_path, method: :get, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
-    <div data-controller= "address-autocomplete" data-address-autocomplete-api-key-value=<%= ENV["MAPBOX_API_KEY"]  %>
->
-      <%= form.text_field :address,
-       data: { address_autocomplete_target: "address" }
-      %>
-
-          <div data-controller= "filter"> <!-- data controller -->
-            <input type="text" name="query" data-filter-target="input" > <%#=  Vetments,Electronique %>
+    <%= form_with url: places_path, method: :get, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
+        <div data-controller= "address-autocomplete" data-address-autocomplete-api-key-value=<%= ENV["MAPBOX_API_KEY"]  %>
+    >
+          <%= form.hidden_field :address,
+          data: { address_autocomplete_target: "address" }
+            %>
+        </div>
 
 
-              <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
-                🪫  Électronique
-              </div>
+                <div data-controller= "filter">
+                <input type="hidden" name="query" data-filter-target="input" > <!-- data controller -->
+                 <%#=  Vetments,Electronique %>
+                  <div class="color-change-div">
+                    <div class="filtres">
+                      <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+                        🪫  Électronique
+                      </div>
 
-               <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
-                🪫  Organique
-              </div>
+                      <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
+                        🪫  Organique
+                      </div>
 
-      </div>
+                      <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+                          🪑  Meubles
+                      </div>
 
-      <%= form.submit "sub"%>
-    </div>
-<% end %>
+                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                          👚  Vêtements
+                      </div>
 
+                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                          🚬  Mégots
+                      </div>
 
-    <div class="filtres">
-            <%= link_to places_path(query: "Électronique") do %>
-              <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>">
-                🪫  Électronique
-              </div>
+                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                          🗑️  Autre
+                      </div>
+
+                    </div>
+
+          </div>
+          <div class="button">
+            <%= form.submit "valider" %>
             <% end %>
-            <%= link_to places_path(query: "Organique") do %>
-              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
-                🍌  Organique
-              </div>
-            <% end %>
-            <%= link_to places_path(query: "Vêtements") do %>
-              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
-                👚  Vêtements
-              </div>
-            <% end %>
-            <%= link_to places_path(query: "Filtre") do %>
-              <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
-                🪑  Meubles
-              </div>
-            <% end %>
-            <%= link_to places_path(query: "Mégots") do %>
-              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
-                🚬  Mégots
-              </div>
-            <% end %>
-            <%= link_to places_path(query: "Autre") do %>
-              <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>">
-                🗑️  Autre
-              </div>
-            <% end %>
-
-    </div>
+          </div>
+  </div>
 </div>
