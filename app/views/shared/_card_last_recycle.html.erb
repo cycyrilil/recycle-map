@@ -5,11 +5,11 @@
 <p class="titre-carte"><strong>Point de collecte à insérer</strong></p>
 <p class="sous-titre-carte">Dernier recyclage à insérer</p>
 <%= simple_form_for [Place.last, Recycle.new] do %>
-<div class="cat form-group">
+<div class="cat form-group d-flex">
 <input type="checkbox" id="électronique" class="form-check-input" name="category[]" value="Electronique">
 <label class="cat-elec form-check-input" for="Electronique">
 🪫
-</div>
+</label>
 
 <input type="checkbox" id="organique" class="form-check-input" name="category[]" value="Organique">
 <label class="cat-orga form-check-input" for="organique">
