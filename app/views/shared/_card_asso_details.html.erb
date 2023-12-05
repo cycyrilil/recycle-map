@@ -2,11 +2,12 @@
 
 <div class="container-recycle-3">
         <div class="boutons-favoris">
-        <%= render "shared/icone-coeur", without_bg: true  %>
+        <%= link_to place_favorites_path(place),data: {turbo_method: :post}  do %>
+        <%= render "shared/icone-coeur-remove", without_bg: true  %>
+        <% end %>
         </div>
 
-<%= link_to place_favorites_path(place), data:{turbo_method: :post} do %>
-<% end %>
+
 
   <div class="bloc-align">
     <%= render "shared/icone-recycle" %>
