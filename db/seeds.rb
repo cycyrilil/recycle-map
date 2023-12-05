@@ -7,48 +7,45 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #
+require "open-uri"
+require "json"
 
+p "------ DESTROY ALL --------"
 User.destroy_all
+PlaceCategory.destroy_all
+Category.destroy_all
+UserBadge.destroy_all
+Badge.destroy_all
+RecycleCategory.destroy_all
+Recycle.destroy_all
+
+
 p "creating some users"
 cyril = User.create!(email: "cyril@mail.com", username: "cycyrilil", password: "zebizebi")
 juan = User.create!(email: "juan@mail.com", username: "juan", password: "juanjuan")
 nono = User.create!(email: "nono@mail.com", username: "nono", password: "nononono")
 p "#{User.count} users created"
 
-Category.destroy_all
+
 p "creating some categories"
-category_1 = Category.create!(name: "Électronique")
-category_2 = Category.create!(name: "Organique")
-category_3 = Category.create!(name: "Vêtements")
-category_4 = Category.create!(name: "Meubles")
-category_5 = Category.create!(name: "Mégots")
+electronique = Category.create(name: "Électronique")
+organique = Category.create(name: "Organique")
+vetement = Category.create(name: "Vêtements")
+meuble = Category.create(name: "Meubles")
+megot = Category.create(name: "Mégots")
+autre = Category.create(name: "Autre")
 p "#{Category.count} categories created"
 
-Badge.destroy_all
 p "creating some badges"
-badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: category_1)
-badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: category_2)
-badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: category_3)
-badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: category_4)
-badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: category_5)
+badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: electronique)
+badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: organique)
+badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: vetement)
+badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: meuble)
+badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: autre)
 p "#{Badge.count} badges created"
 
-  require "open-uri"
-  require "json"
 
   Place.destroy_all
-
-  Category.destroy_all
-
-  electronique = Category.create(name: "Électronique")
-  organique = Category.create(name: "Organique")
-  vetement = Category.create(name: "Vêtements")
-  meuble = Category.create(name: "Meubles")
-  megot = Category.create(name: "Mégots")
-  autre = Category.create(name: "Autre")
-
-
-
   url_1 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
 
   uri = URI.open(url_1)
@@ -58,6 +55,11 @@ p "#{Badge.count} badges created"
     p "creating #{result["libelle"]}"
     Place.create!(name: result["libelle"], address: full_adresse, latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
     PlaceCategory.create!(place: Place.last, category: electronique)
+    PlaceCategory.create!(place: Place.last, category: organique)
+    PlaceCategory.create!(place: Place.last, category: vetement)
+    PlaceCategory.create!(place: Place.last, category: meuble)
+    PlaceCategory.create!(place: Place.last, category: megot)
+    PlaceCategory.create!(place: Place.last, category:  autre)
   end
 
   url_2 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/liste-zone-de-compostage-zero-dechet/records?limit=20"
@@ -77,6 +79,8 @@ p "#{Badge.count} badges created"
   data_3["results"].each do |result|
     p "creating #{result["denomination"]}"
     Place.create!(name: result["denomination"], latitude: result["y"], longitude: result["x"])
+    PlaceCategory.create!(place: Place.last, category: organique)
+    # placeCategory biodechet et autres ? -> organique
   end
 
   url_4 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/les-bennes-de-tri-selectif-a-roubaix/records?limit=27"
@@ -87,7 +91,39 @@ p "#{Badge.count} badges created"
     full_adresse_2 = "#{result["rues"]}, Roubaix"
     p "creating #{result["rues"]},"
     Place.create!(name: result["nombre_typ"], address: full_adresse_2, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
+    PlaceCategory.create!(place: Place.last, category: meuble)
+    PlaceCategory.create!(place: Place.last, category: electronique)
   end
+
+
+  15.times do
+    place =  Place.order("RANDOM()").limit(1).first
+    user = User.order("RANDOM()").limit(1).first
+    recycle = Recycle.create(place: place, user: user)
+    place.place_categories.each_with_index do |place_category, index|
+      next if index.odd?
+      recycle_category = RecycleCategory.create(recycle: recycle, category: place_category.category)
+    end
+  end
+
+ p "-------CREATING BADGES FOR USER-------"
+
+Badge.all.each do |badge|
+
+  eligible_users = User.joins(recycles: { recycle_categories: :category })
+                      .where(categories: { id: badge.category.id })
+                      .group("users.id")
+                      .having("COUNT(DISTINCT recycle_categories.id) >= ?", badge.unlock_number)
+
+  eligible_users.each do |user|
+    UserBadge.create(user: user, badge: badge)
+  end
+end
+
+
+
+
+
 # p "creating some places"
 # place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
 # place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
