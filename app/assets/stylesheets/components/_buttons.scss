@@ -28,3 +28,12 @@
 .btn-secondary:hover {
   color: #868966
 }
+.button {
+  text-align: center;
+  margin-top: 10px; /* Ajustez selon vos besoins */
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+
+}

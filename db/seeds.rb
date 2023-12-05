@@ -80,7 +80,6 @@ p "#{Badge.count} badges created"
     p "creating #{result["denomination"]}"
     Place.create!(name: result["denomination"], latitude: result["y"], longitude: result["x"])
     PlaceCategory.create!(place: Place.last, category: organique)
-    # placeCategory biodechet et autres ? -> organique
   end
 
   url_4 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/les-bennes-de-tri-selectif-a-roubaix/records?limit=27"

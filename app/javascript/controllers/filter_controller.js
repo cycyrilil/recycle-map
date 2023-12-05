@@ -1,6 +1,5 @@
-import {
-  Controller
-} from "@hotwired/stimulus"
+
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["input"];
@@ -8,8 +7,8 @@ export default class extends Controller {
   connect() {
     console.log("Hello, Stimulus!", this.element);
   }
-  addToInput(event) {
 
+  addToInput(event) {
 
     const datasetValue = event.currentTarget.dataset.value;
 const targetValue = this.inputTarget.value;
@@ -40,7 +39,22 @@ if (this.inputTarget.value.slice(0) === ',') {
   console.log('Last character is a comma');
   this.inputTarget.value = this.inputTarget.value.slice(0, 0);
 }
+    // Votre code existant pour ajouter ou supprimer des valeurs dans le champ d'entrée
+
+    // Appel à la fonction changeColor
+    this.changeColor(event.currentTarget);
   }
 
+  changeColor(element) {
+    // Récupère la couleur actuelle
 
+    // Change la couleur en fonction de la couleur actuelle
+
+    // Si la nouvelle couleur est rouge, ajoute une classe, sinon, la supprime
+    if (element.classList.contains('selected-color') === false) {
+      element.classList.add('selected-color');
+    } else {
+      element.classList.remove('selected-color');
+    }
+  }
 }
