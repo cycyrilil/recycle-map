@@ -14,7 +14,6 @@ class FavoritesController < ApplicationController
     @favorite.place = Place.find(params[:place_id])
     @favorite.user = current_user
     if @favorite.save
-      @favorite.status = !@favorite.status
       redirect_to favorites_path
     else
       render :new
