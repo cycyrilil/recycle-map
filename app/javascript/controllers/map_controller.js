@@ -5,7 +5,8 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    userMarker: Object
   }
 
   connect() {
@@ -20,10 +21,8 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-
-
-
   };
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
@@ -36,38 +35,27 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup) // Add this
         .addTo(this.map)
+      });
 
+      // Fit the map to the markers
+      this.#fitMapToMarkers();
 
-    // Fit the map to the markers
-    this.#fitMapToMarkers();
-
-    // Add geocoder control for searching places
-    this.map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
-    }));
+      // Add geocoder control for searching places
+      this.map.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+      }));
 
     // Focus on the user's location and propose a route
     this.#focusOnUserLocation();
-  }
 
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
-      const customMarker = document.createElement("div");
-      customMarker.innerHTML = marker.marker_html;
-      new mapboxgl.Marker(customMarker)
-        .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
-        .addTo(this.map);
-    });
-  }
+  };
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
-  }
+  };
 
   #focusOnUserLocation() {
     if (navigator.geolocation) {
@@ -76,8 +64,13 @@ export default class extends Controller {
         (position) => {
           const userLocation = [position.coords.longitude, position.coords.latitude];
 
+
+          const customMarker = document.createElement("div")
+          customMarker.innerHTML = this.userMarkerValue.marker_html
+          console.log(customMarker)
           // Add a marker for the user's location
-          new mapboxgl.Marker()
+
+          new mapboxgl.Marker(customMarker)
             .setLngLat(userLocation)
             .addTo(this.map);
 
