@@ -1,0 +1,6 @@
+# config/meta.yml
+meta_product_name: "Nom du produit"
+meta_title: "Nom du produit – Slogan du produit"
+meta_description: "Description pertinente"
+meta_image: "cover.png" # devrait exister dans `app/assets/images/`
+twitter_account: "@compte_twitter_du_produit" # requis pour les Twitter Cards
