@@ -20,11 +20,9 @@
       </div>
         <div class="boutons-carte">
             <div data-controller="googlemap" data-address="<%= place.address %>">
-              <button data-action="click->googlemap#getUserLocation">J'y vais</button>
+              <button class="btn-primary details" data-action="click->googlemap#getUserLocation">J'y vais</button>
             </div>
-
-          </div>
-          <button class="btn-secondary">J'ai recyclé</button>
+            <button class="btn-secondary">J'ai recyclé</button>
         </div>
   </div>
 <%# </div> %>
