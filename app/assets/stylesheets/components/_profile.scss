@@ -4,9 +4,23 @@ h1 {
 }
 
 .texte-infos h4 {
-  margin-left: 15px !important;
+  margin: 15px !important;
 }
 
-.texte-profile {
+.titre-profile {
+margin-left: 10px;
+}
 
+.container-profile-1 {
+  display: grid;
+  background-color: $light-gray;
+  border-radius: $border-radius;
+  margin: 20px 10px 10px 10px;
+  padding: 20px 20px 30px 20px
+
+  // align-items: center;
+}
+
+.container-profile-1 p {
+margin: 10px 0px -10px 0px;
 }

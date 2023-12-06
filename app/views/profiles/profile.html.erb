@@ -1,9 +1,11 @@
+<div class="clear">
 <div class="titre-profile">
 <h1>Bienvenue, <%= current_user.username %></h1>
 </div>
-<div class="container-profile">
 
+<div class="container-profile-1">
 
+<div>
     <% if Recycle.where(user: current_user).count >= 25 %>
       <% times = 5 %>
     <% elsif Recycle.where(user: current_user).count >= 20 %>
@@ -24,7 +26,9 @@
 <% (5 - times).times do %>
   <%= image_tag "leaf-svgrepo-com2.png", height: 40, alt: "Logo", class:'marker' %>
 <% end %>
-<%= Recycle.where(user: current_user).all.select {|r| r.year == Date.today.year}.count %>
+</div>
+<p><strong>Super recycleur</strong></p>
+<p><%= Recycle.where(user: current_user).all.select {|r| r.year == Date.today.year}.count %> recyclages </p>
 
 
 </div>
@@ -33,11 +37,16 @@
 <%= render "shared/navbar" %>
 
 <div class="texte-infos">
+<h4>Dernier recylage</h4>
 <%= render "shared/card_last_recycle" %>
 <h4>Recycler à nouveau</h4>
 <div class="container-profile"><%= render "shared/recherche_opaque" %></div>
 <div class="container-profile">
 <h4>Mon activité</h4>
-<%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %>
+<div class="container-profile-1">
+<p><strong>Ce mois ci :</strong></p>
+<p><%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %> recyclages</p>
+</div>
+</div>
 </div>
 </div>
