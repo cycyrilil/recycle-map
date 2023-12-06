@@ -31,7 +31,7 @@
 }
 
 .bot-side {
-  top: 695px;
+  top: 650px;
 }
 
 .background-white-opacity {
@@ -100,3 +100,17 @@
   height: 40px !important;
   box-shadow: none !important;
 }
+
+
+.mapboxgl-canvas {
+  height: 100vh;
+}
+
+.mapboxgl-ctrl-geocoder .mapboxgl-ctrl {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+
+// .mapboxgl-ctrl-geocoder {
+//   background-color: red;
+// }
