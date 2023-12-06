@@ -1,4 +1,6 @@
+<div class="titre-profile">
 <h1>Bienvenue, <%= current_user.username %></h1>
+</div>
 <div class="container-profile">
 
 
@@ -16,10 +18,6 @@
       <% times = 0 %>
     <% end %>
 
-
-
-
-
 <% times.times do %>
   <%= image_tag "leaf-svgrepo-com.png", height: 40, alt: "Logo", class:'marker' %>
 <% end %>
@@ -29,19 +27,17 @@
 <%= Recycle.where(user: current_user).all.select {|r| r.year == Date.today.year}.count %>
 
 
-
-
-
-
 </div>
 
 
 <%= render "shared/navbar" %>
-<div class="container-profile"><%= render "shared/recherche_opaque" %></div>
 
+<div class="texte-infos">
 <%= render "shared/card_last_recycle" %>
-
+<h4>Recycler à nouveau</h4>
+<div class="container-profile"><%= render "shared/recherche_opaque" %></div>
 <div class="container-profile">
-
-<h1>Mon activité</h1>
-<%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %></div>
+<h4>Mon activité</h4>
+<%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %>
+</div>
+</div>

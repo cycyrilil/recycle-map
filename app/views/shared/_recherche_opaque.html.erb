@@ -2,36 +2,43 @@
 
 <div class="container-recherche <%= "bot-side" if current_page?(places_path)%>  <%= "background-gray-opacity" if current_page?(places_path)%>  ">
 
-  <div class="search-bar" data-controller= "address-autocomplete" data-address-autocomplete-api-key-value=<%= ENV["MAPBOX_API_KEY"]  %>>
-    <%= form_with url: places_path, method: :get, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
-    <%= form.hidden_field :address, data: { address_autocomplete_target: "address" } %>
-  </div>
+  <div class="search-bar">
 
-                    <div class="color-change-div">
-                      <div class="filtres" data-controller= "filter">
-                      <input type="hidden" name="query" data-filter-target="input">
-                        <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
-                          🪫  Électronique
-                        </div>
-                        <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
-                          🪫  Organique
-                        </div>
-                        <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
-                            🪑  Meubles
-                        </div>
-                        <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
-                            👚  Vêtements
-                        </div>
-                        <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
-                            🚬  Mégots
-                        </div>
-                        <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
-                            🗑️  Autre
-                        </div>
+
+    <%= form_with url: places_path, method: :get, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
+        <div data-controller= "address-autocomplete" data-address-autocomplete-api-key-value=<%= ENV["MAPBOX_API_KEY"]  %> class="test">
+          <%= form.hidden_field :address,
+          data: { address_autocomplete_target: "address" } %>
+        </div>
+
+
+                <div data-controller= "filter">
+                <input type="hidden" name="query" data-filter-target="input">
+                  <div class="color-change-div">
+                    <div class="filtres">
+                      <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+                        🪫  Électronique
+                      </div>
+                      <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
+                        🪫  Organique
+                      </div>
+                      <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+                          🪑  Meubles
+                      </div>
+                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                          👚  Vêtements
+                      </div>
+                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                          🚬  Mégots
+                      </div>
+                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                          🗑️  Autre
                       </div>
                     </div>
+                  </div>
 
             <%= form.submit "Valider" , class:'btn-primary'%>
             <% end %>
+
   </div>
 </div>
