@@ -1,11 +1,47 @@
 <h1>Bienvenue, <%= current_user.username %></h1>
 <div class="container-profile">
-<i class="fa-regular fa-leaf" style="color: #9C9F78;"></i>
-<i class="fa-regular fa-leaf" style="color: #9C9F78;"></i>
-<i class="fa-regular fa-leaf" style="color: #9C9F78;"></i>
-<i class="fa-regular fa-leaf" style="color: #9C9F78;"></i>
-<i class="fa-regular fa-leaf" style="color: #9C9F78;"></i>
+
+
+    <% if Recycle.where(user: current_user).count >= 25 %>
+      <% times = 5 %>
+    <% elsif Recycle.where(user: current_user).count >= 20 %>
+      <% times = 4 %>
+    <% elsif Recycle.where(user: current_user).count >= 15 %>
+      <% times = 3 %>
+    <% elsif Recycle.where(user: current_user).count >= 10 %>
+      <% times = 2 %>
+    <% elsif Recycle.where(user: current_user).count >= 5 %>
+      <% times = 1 %>
+    <% else %>
+      <% times = 0 %>
+    <% end %>
+
+
+
+
+
+<% times.times do %>
+  <%= image_tag "leaf-svgrepo-com.png", height: 40, alt: "Logo", class:'marker' %>
+<% end %>
+<% (5 - times).times do %>
+  <%= image_tag "leaf-svgrepo-com2.png", height: 40, alt: "Logo", class:'marker' %>
+<% end %>
+<%= Recycle.where(user: current_user).all.select {|r| r.year == Date.today.year}.count %>
+
+
+
+
+
+
 </div>
 
 
 <%= render "shared/navbar" %>
+<div class="container-profile"><%= render "shared/recherche_opaque" %></div>
+
+<%= render "shared/card_last_recycle" %>
+
+<div class="container-profile">
+
+<h1>Mon activité</h1>
+<%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %></div>
