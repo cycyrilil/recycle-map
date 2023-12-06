@@ -1,4 +1,4 @@
-.page_title h1 {
+.page_title {
   margin-top: 30px;
   margin-left: 15px;
 }
@@ -10,7 +10,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .favorite_container {
@@ -37,4 +36,41 @@
   margin-top: 30px;
   margin-bottom: -15px;
   margin-left: 20px;
+}
+
+.icones-carte {
+  margin-top: 10px;
+}
+
+.favorite_title-2 {
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: -15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.subinfos-1 {
+  // margin-bottom: 5px;
+  // font-weight: 300;
+  font-size: 13px;
+}
+
+.subinfos-2 {
+  // margin-bottom: 5px;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.page_title p {
+  margin-left: 10px;
+}
+
+.carte-impact-titre {
+font-size: 20px;
+margin-left: 20px;
+margin-top: 40px;
+margin-bottom: -10px;
 }
