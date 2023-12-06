@@ -1,7 +1,49 @@
 <div class="page_title">
-  <h1>Mois</h1>
-  <p>x recyclages ce mois ci</p>
+  <h1>Historique</h1>
+
+
 </div>
 
-  <%= render "shared/card_month_activity" %>
-  <%= render "shared/impact_card" %>
+
+<% (1..12).to_a.each do |num| %>
+
+
+<div class="border">
+<%this_month = Recycle.where(user: current_user).all.select {|r| r.month == num && r.year == Date.today.year} %>
+<div class="class-impact-titre "><h1>Mon activité ce mois-ci</h1></div>
+<p><%= this_month.count %> this month : <%= num %></p>
+<% this_month.each do |recycle| %>
+
+
+  <div class="favorite_container">
+  <div class="bloc">
+      <div class="icones-carte">
+      <%= render "shared/icone-recycle" %>
+      </div>
+    <div class="infos-map">
+      <div class="favorite_title-2">
+        <%= recycle.place[:name] %>
+      </div>
+    <div class="subinfos-1">
+      <%= recycle.categories.name %>
+    </div>
+        <div class="subinfos-2">
+      <%= recycle.day %>
+    </div>
+  </div>
+</div>
+    </div>
+
+
+<% end %>
+
+
+</div>
+
+
+
+
+
+
+<% end %>
+<div class="clear"></div>
