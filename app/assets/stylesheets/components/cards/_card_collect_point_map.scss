@@ -32,7 +32,7 @@ padding-bottom: 15px;
 
 .mapboxgl-popup-close-button {
 margin: 3px;
-color: #9898989a;
+color: $primary;
 }
 
 
@@ -47,4 +47,24 @@ color: #9898989a;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.bloc-top {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.titre-carte {
+  margin-left: 10px;
+}
+
+.sous-titre-carte {
+  margin-left: 10px;
+}
+
+.boutons-carte {
+  display: grid;
+  justify-content: center;
+  padding: 10px;
 }

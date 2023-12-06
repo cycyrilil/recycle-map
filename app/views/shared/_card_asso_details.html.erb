@@ -1,6 +1,6 @@
 
 
-<div class="container-recycle-3">
+<%# <div class="container-recycle-3"> %>
         <div class="boutons-favoris">
         <%= link_to place_favorites_path(place),data: {turbo_method: :post}  do %>
         <%= render "shared/icone-coeur-remove", without_bg: true  %>
@@ -9,9 +9,11 @@
 
 
   <div class="bloc-align">
-    <%= render "shared/icone-recycle" %>
+  <div class="bloc-top">
+    <%= render "shared/icone-recycle", class:'image' %>
+    <p class="titre-carte"><strong><%= place.name %></strong></p>
+    </div>
       <div class='infos'>
-      <p class="titre-carte"><strong><%= place.name %></strong></p>
       <p class="sous-titre-carte"> <%= place.address %></p>
       <p class="sous-titre-carte"><%= place.description %></p>
       <p class="sous-titre-carte"><%= place.conditions %></p>
@@ -21,10 +23,4 @@
           <button class="btn-secondary">J'ai recyclé</button>
         </div>
   </div>
-</div>
-
-
-<%= link_to places_path, class: "back-btn" do %>
-<i class="fa-solid fa-arrow-left"></i>
-<% end %>
-
+<%# </div> %>
