@@ -56,3 +56,10 @@ padding-top: 6px;
   font-size: 30px;
   padding-top: 15px;
 }
+
+.icon-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+}
