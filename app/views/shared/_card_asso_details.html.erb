@@ -19,7 +19,11 @@
       <p class="sous-titre-carte"><%= place.conditions %></p>
       </div>
         <div class="boutons-carte">
-          <button class="btn-primary details">J'y vais</button>
+            <div data-controller="googlemap" data-address="<%= place.address %>">
+              <button data-action="click->googlemap#getUserLocation">J'y vais</button>
+            </div>
+
+          </div>
           <button class="btn-secondary">J'ai recyclé</button>
         </div>
   </div>
