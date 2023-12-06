@@ -1,43 +1,44 @@
 <div class="container-recycle">
 
-<div class="bloc-align">
-<%= render "shared/icone-recycle" %>
-<p class="titre-carte"><strong>Point de collecte à insérer</strong></p>
-<p class="sous-titre-carte">Dernier recyclage à insérer</p>
+  <div class="bloc-align">
+  <%= render "shared/icone-recycle" %>
+  <p class="titre-carte"><strong>Point de collecte à insérer</strong></p>
+  <p class="sous-titre-carte">Dernier recyclage à insérer</p>
 <%= simple_form_for [Place.last, Recycle.new] do %>
-<div class="cat form-group d-flex">
-<input type="checkbox" id="électronique" class="form-check-input" name="category[]" value="Electronique">
-<label class="cat-elec formm-check-input" for="Electronique">
-🪫
-</label>
+  <div class="cat form-group">
 
-<input type="checkbox" id="organique" class="form-check-input" name="category[]" value="Organique">
-<label class="cat-orga formm-check-input" for="organique">
-🍌
-</label>
+  <div class="icon-checkbox">
+    <input type="checkbox" id="électronique" class="form-check-input" name="category[]" value="Electronique">
+    <label class="cat-elec formm-check-input" for="Electronique">🪫</label>
+  </div>
 
-<input type="checkbox" id="vêtements" class="form-check-input" name="category[]" value="Vêtements">
-<label class="cat-vet formm-check-input" for="vêtements" >
-👚
-</label>
+  <div class="icon-checkbox">
+    <input type="checkbox" id="organique" class="form-check-input" name="category[]" value="Organique">
+    <label class="cat-orga formm-check-input" for="organique">🍌</label>
+  </div>
 
-<input type="checkbox" id="meuble" class="form-check-input" name="category[]" value="Meuble">
-<label class="cat-meubles formm-check-input" for="meuble">
-🪑
-</label>
+  <div class="icon-checkbox">
+    <input type="checkbox" id="vêtements" class="form-check-input" name="category[]" value="Vêtements">
+    <label class="cat-vet formm-check-input" for="vêtements" >👚</label>
+  </div>
 
-<input type="checkbox" id="mégots" class="form-check-input" name="category[]" value="Mégots">
-<label class="cat-megots formm-check-input" for="mégots" >
-🚬
-</label>
+  <div class="icon-checkbox">
+    <input type="checkbox" id="meuble" class="form-check-input" name="category[]" value="Meuble">
+    <label class="cat-meubles formm-check-input" for="meuble">🪑</label>
+  </div>
 
-<input type="checkbox" id="autre" class="form-check-input" name="category[]" value="Autre">
-<label class="cat-autre formm-check-input" for="autre">
-🗑️
-</label>
-</div>
+  <div class="icon-checkbox">
+    <input type="checkbox" id="mégots" class="form-check-input" name="category[]" value="Mégots">
+    <label class="cat-megots formm-check-input" for="mégots" >🚬</label>
+  </div>
 
-<button class="btn-primary" type="summit">Valider</button>
-<% end %>
+  <div class="icon-checkbox">
+    <input type="checkbox" id="autre" class="form-check-input" name="category[]" value="Autre">
+    <label class="cat-autre formm-check-input" for="autre">🗑️</label>
+  </div>
+
+  <% end %>
+  </div>
+  <button class="btn-primary" type="summit" style="margin:0">Valider</button>
 </div>
 </div>
