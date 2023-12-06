@@ -18,4 +18,8 @@ class Recycle < ApplicationRecord
     created_at.day
   end
 
+  def month_name(month_number)
+    Date::MONTHNAMES[month_number]
+  end
+
 end
