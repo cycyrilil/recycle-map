@@ -12,7 +12,7 @@ class RecyclesController < ApplicationController
       end
     end
     if @recycle.save
-      redirect_to place_recycles_path(@place)
+      redirect_to activity_path(@user)
     end
   end
 
