@@ -4,6 +4,8 @@
 
   <div class="search-bar">
 
+
+
     <%= form_with url: places_path, method: :get, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
         <div data-controller= "address-autocomplete" data-address-autocomplete-api-key-value=<%= ENV["MAPBOX_API_KEY"]  %> class="test">
           <%= form.hidden_field :address,
@@ -14,22 +16,25 @@
                 <input type="hidden" name="query" data-filter-target="input">
                   <div class="color-change-div">
                     <div class="filtres">
-                      <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+
+
+
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Électronique")%> filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
                         🪫  Électronique
                       </div>
-                      <div class="filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Organique")%> filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
                         🍌  Organique
                       </div>
-                      <div class=" filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+                      <div class=" <%="selected-color" if params[:query] &&  params[:query].split(',').include?("Meubles")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
                           🪑  Meubles
                       </div>
-                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Vêtements")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
                           👚  Vêtements
                       </div>
-                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Mégots")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
                           🚬  Mégots
                       </div>
-                      <div class="filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Autre")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
                           🗑️  Autre
                       </div>
                     </div>
