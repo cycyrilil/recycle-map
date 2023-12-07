@@ -42,6 +42,7 @@
     <div class="container-profile-1">
       <h5><strong>Ce mois ci :</strong></h5>
       <p><%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %> recyclages</p>
+    <%= link_to 'Voir le détail', activity_path, class:'voirplus' %>
     </div>
   </div>
 
