@@ -27,7 +27,7 @@
   <%= image_tag "leaf-svgrepo-com2.png", height: 40, alt: "Logo", class:'marker' %>
 <% end %>
 </div>
-<p><strong>Super recycleur</strong></p>
+<p class="catname"><strong>Super recycleur</strong></p>
 <p><%= Recycle.where(user: current_user).all.select {|r| r.year == Date.today.year}.count %> recyclages </p>
 
 
@@ -38,7 +38,7 @@
 <div class="texte-infos">
 
 <div class="container-profile">
-    <h4>Mon activité</h4>
+    <h4>Activité</h4>
     <div class="container-profile-1">
       <h5><strong>Ce mois ci :</strong></h5>
       <p><%= Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %> recyclages</p>
