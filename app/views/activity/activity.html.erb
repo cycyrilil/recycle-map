@@ -42,7 +42,7 @@
   <div class="class-impact-titre "></div>
   <p><% this_month.count %><% Recycle.month_name(month_number)%></p>
 
-  <% this_month.each do |recycle| %>
+  <% this_month.reverse.each do |recycle| %>
   <div class="favorite_container">
     <div class="bloc">
       <div class="icones-carte">

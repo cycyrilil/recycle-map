@@ -6,9 +6,11 @@ class RecyclesController < ApplicationController
     @recycle.user = @user
     @recycle.place = @place
 
+
+
     if params[:category].present?
       params[:category].each do |category|
-        RecycleCategory.create(category: Category.find_by(name: category), recycle: @recycle)
+        RecycleCategory.create(category: Category.where("name ILIKE '%#{category}%'").first, recycle: @recycle)
       end
     end
     if @recycle.save
