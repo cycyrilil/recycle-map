@@ -1,8 +1,11 @@
 <div class="titre-profile">
 <h1>Bienvenue, <%= current_user.username %></h1>
+
+<div class="badges">
 <% current_user.badges.each do |badge| %>
-<%= image_tag badge.image %>
+<%= image_tag badge.image, class:'image-badge' %>
 <% end %>
+</div>
 
 </div>
 
