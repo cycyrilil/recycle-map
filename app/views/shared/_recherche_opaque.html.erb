@@ -25,16 +25,16 @@
                       <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Organique")%> filtre <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Organique">
                         🍌  Organique
                       </div>
-                      <div class=" <%="selected-color" if params[:query] &&  params[:query].split(',').include?("Meubles")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Électronique">
+                      <div class=" <%="selected-color" if params[:query] &&  params[:query].split(',').include?("Meubles")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>" data-action="click->filter#addToInput" data-value="Meubles">
                           🪑  Meubles
                       </div>
-                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Vêtements")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Vêtements")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Vêtements">
                           👚  Vêtements
                       </div>
-                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Mégots")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Mégots")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Mégots">
                           🚬  Mégots
                       </div>
-                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Autre")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Organique">
+                      <div class="<%="selected-color" if params[:query] &&  params[:query].split(',').include?("Autre")%> filtre  <%= "background-white-opacity" if current_page?(places_path)%>"data-action="click->filter#addToInput" data-value="Autre">
                           🗑️  Autre
                       </div>
                     </div>
