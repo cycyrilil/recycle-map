@@ -22,4 +22,8 @@ class Recycle < ApplicationRecord
     Date::MONTHNAMES[month_number]
   end
 
+
+
+
+
 end
