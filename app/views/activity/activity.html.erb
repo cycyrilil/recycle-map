@@ -7,11 +7,11 @@
 
 <% (1..12).to_a.each do |num| %>
 
-
+<% month_number = num %>
 <div class="border">
 <%this_month = Recycle.where(user: current_user).all.select {|r| r.month == num && r.year == Date.today.year} %>
 <div class="class-impact-titre "><h1>Mon activité ce mois-ci</h1></div>
-<p><%= this_month.count %> this month : <%= num %></p>
+<p><%= this_month.count %> this month : <%= Recycle.month_name(month_number)%></p>
 <% this_month.each do |recycle| %>
 
 
@@ -25,10 +25,13 @@
         <%= recycle.place[:name] %>
       </div>
     <div class="subinfos-1">
-      <%= recycle.categories.name %>
+      <% RecycleCategory.where(recycle_id: recycle.id).each do |recycle_category| %>
+      <%= recycle_category.category.name %>
+      <% end %>
     </div>
         <div class="subinfos-2">
-      <%= recycle.day, recycle.month %>
+      <%= recycle.day %>
+      <%= recycle.month %>
     </div>
   </div>
 </div>
