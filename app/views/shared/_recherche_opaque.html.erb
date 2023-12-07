@@ -4,13 +4,11 @@
 
   <div class="search-bar">
 
-
     <%= form_with url: places_path, method: :get, html: { class: "simple_form search", novalidate: "novalidate" } do |form| %>
         <div data-controller= "address-autocomplete" data-address-autocomplete-api-key-value=<%= ENV["MAPBOX_API_KEY"]  %> class="test">
           <%= form.hidden_field :address,
           data: { address_autocomplete_target: "address" } %>
         </div>
-
 
                 <div data-controller= "filter">
                 <input type="hidden" name="query" data-filter-target="input">
@@ -36,9 +34,10 @@
                       </div>
                     </div>
                   </div>
-
+                </div>
+              <div class="bouton-droit">
             <%= form.submit "Valider" , class:'btn-primary'%>
+            </div>
             <% end %>
-
   </div>
 </div>
