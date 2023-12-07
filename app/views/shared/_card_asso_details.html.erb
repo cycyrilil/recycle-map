@@ -1,28 +1,29 @@
-
-
 <%# <div class="container-recycle-3"> %>
-        <div class="boutons-favoris">
-        <%= link_to place_favorites_path(place),data: {turbo_method: :post}  do %>
-        <%= render "shared/icone-coeur-remove", without_bg: true  %>
-        <% end %>
-        </div>
+<div class="boutons-favoris">
+  <%= link_to place_favorites_path(place),data: {turbo_method: :post}  do %>
+  <%= render "shared/icone-coeur-remove", without_bg: true  %>
+  <% end %>
+</div>
 
 
-  <div class="bloc-align">
+<div class="bloc-align">
   <div class="bloc-top">
     <%= render "shared/icone-recycle", class:'image' %>
     <p class="titre-carte"><strong><%= place.name %></strong></p>
-    </div>
-      <div class='infos'>
-      <p class="sous-titre-carte"> <%= place.address %></p>
-      <p class="sous-titre-carte"><%= place.description %></p>
-      <p class="sous-titre-carte"><%= place.conditions %></p>
-      </div>
-        <div class="boutons-carte">
-            <div data-controller="googlemap" data-address="<%= place.address %>">
-              <button class="btn-primary details" data-action="click->googlemap#getUserLocation"><strong>J'y vais</strong></button>
-            </div>
-            <button class="btn-secondary"><strong>J'ai recyclé</strong></button>
-        </div>
   </div>
+  <div class='infos'>
+    <p class="sous-titre-carte"> <%= place.address %></p>
+    <p class="sous-titre-carte"><%= place.description %></p>
+    <p class="sous-titre-carte"><%= place.conditions %></p>
+  </div>
+  <div class="boutons-carte">
+    <div data-controller="googlemap" data-address="<%= place.address %>">
+      <button class="btn-primary details" data-action="click->googlemap#getUserLocation"><strong>J'y
+          vais</strong></button>
+    </div>
+    <div class='bouton-droit'>
+      <%= link_to "J'ai recyclé", profile_path, class: "btn-secondary" %>
+    </div>
+  </div>
+</div>
 <%# </div> %>
