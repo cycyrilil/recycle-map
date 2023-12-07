@@ -28,12 +28,12 @@ p "#{User.count} users created"
 
 
 p "creating some categories"
-electronique = Category.create(name: "Électronique")
-organique = Category.create(name: "Organique")
-vetement = Category.create(name: "Vêtements")
-meuble = Category.create(name: "Meubles")
-megot = Category.create(name: "Mégots")
-autre = Category.create(name: "Autre")
+electronique = Category.create(name: "Électronique 🪫")
+organique = Category.create(name: "Organique 🍌")
+vetement = Category.create(name: "Vêtements 👚")
+meuble = Category.create(name: "Meubles 🪑")
+megot = Category.create(name: "Mégots 🚬")
+autre = Category.create(name: "Autre 🗑️")
 p "#{Category.count} categories created"
 
 p "creating some badges"
