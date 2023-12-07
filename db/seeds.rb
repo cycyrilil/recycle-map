@@ -38,11 +38,11 @@ autre = Category.create(name: "Autre 🗑️")
 p "#{Category.count} categories created"
 
 p "creating some badges"
-badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: electronique, image: "pile_720.png" )
-badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: organique, image: "banane_720.png")
-badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: vetement, image: "ve_tement_720.png")
-badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: meuble, image: "chaise_720.png")
-badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: autre, image: "autre_720.png")
+badge_1 = Badge.create!(unlock_number: 2, name: "Électronique", category: electronique, image: "pile_720.png" )
+badge_2 = Badge.create!(unlock_number: 2, name: "Organique", category: organique, image: "banane_720.png")
+badge_3 = Badge.create!(unlock_number: 2, name: "Vêtements", category: vetement, image: "ve_tement_720.png")
+badge_4 = Badge.create!(unlock_number: 2, name: "Meubles", category: meuble, image: "chaise_720.png")
+badge_5 = Badge.create!(unlock_number: 2, name: "Mégots", category: autre, image: "autre_720.png")
 p "#{Badge.count} badges created"
 
 
