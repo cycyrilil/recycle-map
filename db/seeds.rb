@@ -24,6 +24,7 @@ p "creating some users"
 cyril = User.create!(email: "cyril@mail.com", username: "Cyril", password: "zebizebi")
 juan = User.create!(email: "juan@mail.com", username: "Juan", password: "juanjuan")
 nono = User.create!(email: "nono@mail.com", username: "Noémie", password: "nononono")
+demo = User.create!(email: "demo@mail.com", username: "Demo", password: "zebizebi")
 p "#{User.count} users created"
 
 
