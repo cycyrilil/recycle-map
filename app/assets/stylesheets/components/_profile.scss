@@ -12,6 +12,7 @@ h1 {
 margin-left: 5px;
 }
 
+
 .container-profile-1 {
   display: grid;
   background-color: $light-gray;
@@ -42,4 +43,9 @@ margin: 5px 0px -10px 0px;
   .catname {
     margin-bottom: -4px !important;
     margin-top : 8px !important;
+  }
+
+  .marges {
+    margin-left: 15px;
+    margin-bottom: 20px;
   }
