@@ -1,13 +1,34 @@
 <div class="page_title-2">
-  <h1>Historique des recyclages</h1>
+  <h1>Historique</h1>
 </div>
 
+<div class="titre-historique">
+  <h4>Badges du mois</h4>
+</div>
 
-<%# <h4>Recyclages du mois</h4> %>
+<div class="favorite_container">
+  <div class="badge-title">
+    <p><strong><%= current_user.badges.count %> badge(s) 🏆</strong></p>
+  </div>
+  <% current_user.badges.each do |badge| %>
+  <div class="badge-cat">
+
+
+    <%= image_tag badge.image, class:'image-badge' %>
+    <div class="badge-name"><strong><%= badge.name %>&nbsp;:&nbsp;</strong></div>
+    <div class="badge-count"><%= badge.category.recycle_categories.count{|category| category.recycle.user == current_user}%>&nbsp;recyclages</div>
+</div>
+<% end %>
+
+</div>
+
+<div class="titre-historique-2">
+  <h4>Derniers recyclages</h4>
+</div>
 
 <div>
 
-<% Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %>
+  <% Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %>
 
 </div>
 
@@ -16,7 +37,7 @@
 <% (1..12).to_a.each do |num| %>
 
 <% month_number = num %>
-<div >
+<div>
   <%this_month = Recycle.where(user: current_user).all.select {|r| r.month == num && r.year == Date.today.year} %>
   <div class="class-impact-titre "></div>
   <p><% this_month.count %><% Recycle.month_name(month_number)%></p>
