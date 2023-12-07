@@ -9,10 +9,11 @@ class PlacesController < ApplicationController
       @query = ""
       params[:query].split(",").each_with_index do |query, index|
         @query += " OR " unless index == 0
-        @query += "categories.name ILIKE '%?%'"
+        @query += "categories.name ILIKE '%#{query}%'"
       end
 
-      @places = @places.where(categories: {name: params[:query].split(',')})
+      @places = @places.where(@query)
+
     end
 
     # The `geocoded` scope filters only flats with coordinates
