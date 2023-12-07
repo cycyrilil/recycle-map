@@ -37,11 +37,11 @@ autre = Category.create(name: "Autre")
 p "#{Category.count} categories created"
 
 p "creating some badges"
-badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: electronique)
-badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: organique)
-badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: vetement)
-badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: meuble)
-badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: autre)
+badge_1 = Badge.create!(unlock_number: 2, name: "electroman", category: electronique, image: "pile_720.png" )
+badge_2 = Badge.create!(unlock_number: 2, name: "organiqueman", category: organique, image: "banane_720.png")
+badge_3 = Badge.create!(unlock_number: 2, name: "vêtementsman", category: vetement, image: "ve_tement_720.png")
+badge_4 = Badge.create!(unlock_number: 2, name: "meublesman", category: meuble, image: "chaise_720.png")
+badge_5 = Badge.create!(unlock_number: 2, name: "mégotsman", category: autre, image: "autre_720.png")
 p "#{Badge.count} badges created"
 
 
@@ -107,17 +107,17 @@ p "#{Badge.count} badges created"
 
  p "-------CREATING BADGES FOR USER-------"
 
-Badge.all.each do |badge|
+# Badge.all.each do |badge|
 
-  eligible_users = User.joins(recycles: { recycle_categories: :category })
-                      .where(categories: { id: badge.category.id })
-                      .group("users.id")
-                      .having("COUNT(DISTINCT recycle_categories.id) >= ?", badge.unlock_number)
+#   eligible_users = User.joins(recycles: { recycle_categories: :category })
+#                       .where(categories: { id: badge.category.id })
+#                       .group("users.id")
+#                       .having("COUNT(DISTINCT recycle_categories.id) >= ?", badge.unlock_number)
 
-  eligible_users.each do |user|
-    UserBadge.create(user: user, badge: badge)
-  end
-end
+#   eligible_users.each do |user|
+#     UserBadge.create(user: user, badge: badge)
+#   end
+# end
 
 
 
