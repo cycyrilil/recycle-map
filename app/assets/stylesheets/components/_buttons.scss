@@ -8,7 +8,7 @@
   transition: color 0.3s ease;
   border: none;
   box-shadow: $box-shadow;
-  margin-left: 135px;
+  // margin-left: 135px;
 }
 
 .btn-primary:hover {
@@ -63,4 +63,14 @@
 
 .btn-primary-small:hover {
   background: #868966;
+}
+
+.buttontest {
+  margin-left : 75px !important;
+}
+
+.bouton-droit {
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }

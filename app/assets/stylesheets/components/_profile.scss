@@ -12,13 +12,14 @@ h1 {
 margin-left: 5px;
 }
 
+
 .container-profile-1 {
   display: grid;
   background-color: $light-gray;
   border-radius: $border-radius;
   margin: 0px 10px 10px 10px;
-  padding: 20px 20px 30px 20px
-
+  padding: 20px 20px 30px 20px;
+  font-size: 17px;
   // align-items: center;
 }
 
@@ -29,4 +30,22 @@ margin: 5px 0px -10px 0px;
 .container-profile-1 h5 {
   margin: 0px 0px -2px 0px;
   font-size: 17px;
+  }
+
+  .voirplus {
+  font-size: 14px;
+  color:$primary;
+  text-decoration: underline;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  }
+
+  .catname {
+    margin-bottom: -4px !important;
+    margin-top : 8px !important;
+  }
+
+  .marges {
+    margin-left: 15px;
+    margin-bottom: 20px;
   }
