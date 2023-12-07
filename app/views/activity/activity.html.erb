@@ -1,52 +1,51 @@
 <div class="page_title">
-  <h1>Historique</h1>
+  <h1>Historique des recyclages</h1>
+</div>
 
+
+<%# <h4>Recyclages du mois</h4> %>
+
+<div>
+
+<% Recycle.where(user: current_user).all.select {|r| r.month == Date.today.month && r.year == Date.today.year}.count %>
 
 </div>
 
+<%# <h4>Activité par mois</h4> %>
 
 <% (1..12).to_a.each do |num| %>
 
 <% month_number = num %>
-<div class="border">
-<%this_month = Recycle.where(user: current_user).all.select {|r| r.month == num && r.year == Date.today.year} %>
-<div class="class-impact-titre "><h1>Mon activité ce mois-ci</h1></div>
-<p><%= this_month.count %> this month : <%= Recycle.month_name(month_number)%></p>
-<% this_month.each do |recycle| %>
+<div >
+  <%this_month = Recycle.where(user: current_user).all.select {|r| r.month == num && r.year == Date.today.year} %>
+  <div class="class-impact-titre "></div>
+  <p><% this_month.count %><% Recycle.month_name(month_number)%></p>
 
-
+  <% this_month.each do |recycle| %>
   <div class="favorite_container">
-  <div class="bloc">
+    <div class="bloc">
       <div class="icones-carte">
-      <%= render "shared/icone-recycle" %>
+        <%= render "shared/icone-recycle" %>
       </div>
-    <div class="infos-map">
-      <div class="favorite_title-2">
-        <%= recycle.place[:name] %>
-      </div>
-    <div class="subinfos-1">
-      <% RecycleCategory.where(recycle_id: recycle.id).each do |recycle_category| %>
-      <%= recycle_category.category.name %>
-      <% end %>
-    </div>
+      <div class="infos-map">
+        <div class="favorite_title-2">
+          <%= recycle.place[:name] %>
+        </div>
+        <div class="subinfos-1">
+          <% RecycleCategory.where(recycle_id: recycle.id).each do |recycle_category| %>
+          <%= recycle_category.category.name %>
+          <% end %>
+        </div>
         <div class="subinfos-2">
-      <%= recycle.day %>
-      <%= recycle.month %>
+          Date :
+          <%= recycle.day %>
+          /
+          <%= recycle.month %>
+        </div>
+      </div>
     </div>
   </div>
+  <% end %>
 </div>
-    </div>
-
-
-<% end %>
-
-
-</div>
-
-
-
-
-
-
 <% end %>
 <div class="clear"></div>
