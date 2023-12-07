@@ -53,8 +53,8 @@ padding-top: 6px;
 }
 
 .fa-leaf {
-  font-size: 30px;
-  padding-top: 15px;
+  font-size: 25px;
+  padding-top: 8px;
 }
 
 .icon-checkbox {
@@ -62,4 +62,14 @@ padding-top: 6px;
   align-items: center;
   justify-content: center;
   flex-direction: column-reverse;
+}
+
+.circle-green-7 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $primary;
+  text-align: center;
+  box-shadow: $box-shadow;
+  margin-bottom: 10px;
 }

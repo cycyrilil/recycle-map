@@ -8,7 +8,9 @@
 
 <div class="bloc-align">
   <div class="bloc-top">
-    <%= render "shared/icone-recycle", class:'image' %>
+    <div class='image-map2'>
+    <%= render "shared/icone-impact", class:'image' %>
+    </div>
     <p class="titre-carte"><strong><%= place.name %></strong></p>
   </div>
   <div class='infos'>
@@ -18,11 +20,11 @@
   </div>
   <div class="boutons-carte">
     <div data-controller="googlemap" data-address="<%= place.address %>">
-      <button class="btn-primary details" data-action="click->googlemap#getUserLocation"><strong>J'y
+      <button class="btn-primary details-1" data-action="click->googlemap#getUserLocation"><strong>J'y
           vais</strong></button>
     </div>
     <div class='bouton-droit'>
-      <%= link_to "J'ai recyclé", profile_path, class: "btn-secondary" %>
+      <%= link_to "J'ai recyclé", profile_path, class: "btn-secondary details-2" %>
     </div>
   </div>
 </div>
