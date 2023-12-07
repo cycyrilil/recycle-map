@@ -4,7 +4,7 @@
   <%= render "shared/icone-recycle" %>
   <p class="titre-carte"><strong>Point de collecte à insérer</strong></p>
   <p class="sous-titre-carte">Dernier recyclage à insérer</p>
-<%= simple_form_for [Place.last, Recycle.new] do %>
+<%= simple_form_for [Place.last, Recycle.new], url: profile_path do |f| %>
   <div class="cat form-group">
 
   <div class="icon-checkbox">
@@ -36,9 +36,13 @@
     <input type="checkbox" id="autre" class="form-check-input" name="category[]" value="Autre">
     <label class="cat-autre formm-check-input" for="autre">🗑️</label>
   </div>
-
-  <% end %>
   </div>
-  <button class="btn-primary" type="summit" style="margin:0">Valider</button>
+  <div>
+    <%= link_to "Valider", profile_path, class: "btn-primary buttontest" %>
+
+  </div>
+    <% end %>
+  </div>
+  </div>
 </div>
 </div>
