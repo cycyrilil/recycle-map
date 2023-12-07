@@ -93,6 +93,9 @@ p "#{Badge.count} badges created"
     PlaceCategory.create!(place: Place.last, category: meuble)
     PlaceCategory.create!(place: Place.last, category: electronique)
   end
+  url_5 = "https://www.cercle-recyclage.asso.fr/"
+  Place.create!(name: "Cercle Recyclage", address: "5 Rue Jules de Vicq, 59800 Lille" , latitude: 50.3756, longitude: 3.0511)
+  PlaceCategory.create!(place: Place.last, category: organique)
 
 
   15.times do
