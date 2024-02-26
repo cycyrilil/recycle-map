@@ -1,67 +1,90 @@
-h1 {
-  margin-top: 30px;
-  margin-left: 5px;
-  margin-bottom: 15px;
+// delete the following line if no text is used
+// edit the line if you wanna use other fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+// use only the available space inside the 400x400 frame
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	overflow: hidden;
+  background: #fff;
+  color: #333;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-.texte-infos h4 {
-  margin: 15px !important;
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
-.titre-profile {
-margin-left: 5px;
+.container {
+background: rgb(203,126,80);
+background: linear-gradient(214deg, rgba(203,126,80,1) 0%, rgba(237,187,107,1) 100%);
+width: 400px;
+height: 400px;
 }
 
-
-.container-profile-1 {
-  display: grid;
-  background-color: $light-gray;
-  border-radius: $border-radius;
-  margin: 0px 10px 10px 10px;
-  padding: 20px 20px 30px 20px;
-  font-size: 17px;
-  // align-items: center;
+.main-profile {
+	background-color: white;
+	height: 300px;
+	width: 300px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+	border-radius: 3px;
 }
 
-.container-profile-1 p {
-margin: 10px 0px -5px 0px;
+.btn {
+	text-decoration: none;
+  color: #4A4A4A;
+  border: 1px solid #826d56ff ;
+  padding: 8px 24px;
+  border-radius: 50px;
+	font-weight: 600;
+	color: #826d56ff;
+	text-align: center;
+	margin-top: 10px;
 }
 
-.container-profile-1 h5 {
-  margin: 0px 0px -2px 0px;
-  font-size: 17px;
-  }
+.buttons {
+	display: grid;
+	width: 50%;
+}
 
-  .voirplus {
-  font-size: 14px;
-  color:$primary;
-  text-decoration: underline;
-  margin-top: 10px;
-  margin-bottom: -10px;
-  }
+.titles {
+	color: #826d56ff;
+	text-align: center;
+}
 
-  .catname {
-    margin-bottom: -4px !important;
-    margin-top : 8px !important;
-  }
+.left-part {
+	display: grid;
+	justify-items: center;
+}
 
-  .marges {
-    margin-left: 15px;
-    margin-bottom: 20px;
-  }
+.photo {
+	overflow: hidden;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
 
+.photo img {
+	width: 100%;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+}
 
-
-  .container-profile-10 {
-    display: grid;
-    background-color: $light-gray;
-    border-radius: $border-radius;
-    margin: 0px 10px 0px 10px;
-    padding: 20px 20px 10px 20px;
-    font-size: 17px;
-    // align-items: center;
-  }
-
-  .container-profile-10 p {
-    padding-top: 5px;
-  }
