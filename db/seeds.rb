@@ -22,7 +22,7 @@ Recycle.destroy_all
 
 p "creating some users"
 cyril = User.create!(email: "cyril@mail.com", username: "Cyril", password: "zebizebi")
-juan = User.create!(email: "juan@mail.com", username: "Juan", password: "juanjuan")
+juan = User.create!(email: "juan1@mail.com", username: "Juan", password: "juanjuan")
 nono = User.create!(email: "nono@mail.com", username: "Noémie", password: "nononono")
 demo = User.create!(email: "demo@mail.com", username: "Demo", password: "zebizebi")
 p "#{User.count} users created"
@@ -47,6 +47,7 @@ p "#{Badge.count} badges created"
 
 
   Place.destroy_all
+
   url_1 = "https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/dechetterie/records?limit=20"
 
   uri = URI.open(url_1)
@@ -55,11 +56,6 @@ p "#{Badge.count} badges created"
     full_adresse = "#{result["adresse"]}, #{result["commune"]}"
     p "creating #{result["libelle"]}"
     Place.create!(name: result["libelle"], address: full_adresse, latitude: result["geometry"]["geometry"]["coordinates"][1], longitude: result["geometry"]["geometry"]["coordinates"][0], description: result["type"])
-    PlaceCategory.create!(place: Place.last, category: electronique)
-    PlaceCategory.create!(place: Place.last, category: organique)
-    PlaceCategory.create!(place: Place.last, category: vetement)
-    PlaceCategory.create!(place: Place.last, category: meuble)
-    PlaceCategory.create!(place: Place.last, category: megot)
     PlaceCategory.create!(place: Place.last, category:  autre)
   end
 
@@ -92,7 +88,6 @@ p "#{Badge.count} badges created"
     p "creating #{result["rues"]},"
     Place.create!(name: result["nombre_typ"], address: full_adresse_2, latitude: result["geo_shape"]["geometry"]["coordinates"][1], longitude: result["geo_shape"]["geometry"]["coordinates"][0])
     PlaceCategory.create!(place: Place.last, category: meuble)
-    PlaceCategory.create!(place: Place.last, category: electronique)
   end
   url_5 = "https://www.cercle-recyclage.asso.fr/"
   Place.create!(name: "Cercle Recyclage", address: "5 Rue Jules de Vicq, 59800 Lille" , latitude: 50.3756, longitude: 3.0511)
@@ -125,13 +120,24 @@ p "#{Badge.count} badges created"
 
 
 
+p "creating some places"
+place_1 = Place.create!(name: "Recuperation et recyclage pour le dÉveloppement", description: "mobiliser l'ensemble des acteurs sur des projets et programmes nationaux et ou internationaux de récupération et de recyclage des équipements dans les différents secteurs économiques ; ces équipements sont destinés à une réutilisation en France et dans les pays africains dans une démarche de solidarité et de développement durable", address: "25 bis Rue Eugene Varlin 59000 Lille", latitude: 50.64794, longitude: 3.0037308, contact: "06 51 51 51 51. Minimum de dépôt : 10kg de déchets.")
+PlaceCategory.create!(place: Place.last, category: meuble)
 
 
-# p "creating some places"
-# place_1 = Place.create!(name: "Compos't de Pomme", description: "Charles et Alice vous invitent à recycler vos déchets organiques dans leur composteur douillet au coeur de Lille. Après un traitement révolutionnaire, vos épluchures et autres coquilles d'oeufs seront transformées en goûter fruités, distribués aux enfants dans toutes les cantines de la métropôle. C'est la définition même d'un circuit court, qui profite à tous !", address: "14, Boulevard de la Liberté, 59000 Lille", contact: "L'association est ouverte tous les jours de 9h à 18h et joignable au 0645637893.")
-# place_2 = Place.create!(name: "Cy-clopes", description: "Vous ne savez pas quoi faire de vos vieux mégots de cigarette ? Apportez-les à l'association Cy-clopes : nous les transformeront en plaids tous doux.", address: "18, Boulevard de la Liberté, 59000 Lille", contact: "0645637893. Minimum de dépôt : 40kg de mégots.")
-# place_3 = Place.create!(name: "Doggy Poop", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "14, parc Jean-Baptiste Lebas, 59000 Lille", contact: "Ce qui ne nous tue pas l'odorat nous rend plus forts.")
-# p "#{Place.count} places created"
+
+place_2 = Place.create!(name: "les plasticoeurs", description: "oeuvrer, expliquer aux partenaires en Europe et plus précisément en France l'importance de participer sur le thème de l'écologie avec les associations du même ordre en place en Afrique, travailler sur les techniques de collectes,de tri des déchets,de fabrication artisanale d'objets recyclés voire de transformation en pâte et/ou d'hydrocarbures ( technique de pyrolyse);", address: "Avenue de la Republique 59000 Lille", latitude: 50.6304071, longitude: 3.0139712, contact: "06 51 51 51 51. Minimum de dépôt : 10kg de déchets.")
+PlaceCategory.create!(place: Place.last, category: meuble)
+PlaceCategory.create!(place: Place.last, category: autre)
+
+place_3 = Place.create!(name:"Sustain clothes", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "38 Rue Ampere 59130 Lambersart", latitude: 50.6413352, longitude: 3.0208549, contact: "06 51 51 51 51. Minimum de dépôt : 10kg de déchets.")
+PlaceCategory.create!(place: Place.last, category: vetement)
+
+place_4 = Place.create!(name:"communauté Emmaüs Wambrechies", description: "L'association Doggy Poop est spécialiste du recyclage de selles canines depuis 1976. Après avoir extrait la matière organique, nous récupérons les nutriments restants grâce à la chimie quantique, et les transformons en compléments alimentaires.", address: "1 Chem. du Fort, 59118 Wambrechies", latitude: 50.6828, longitude: 3.0478,)
+PlaceCategory.create!(place: Place.last, category: vetement)
+PlaceCategory.create!(place: Place.last, category: meuble)
+PlaceCategory.create!(place: Place.last, category: electronique)
+p "#{Place.count} places created"
 
 # Recycle.destroy_all
 # p "creating some recycle"
